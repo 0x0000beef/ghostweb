@@ -43,10 +43,19 @@
   {% endif %}
 </header>
 
+{# Обновленная секция <main> для page--front.html.twig #}
 <main class="main-content-wrapper" role="main">
-  {% set main_container_class = (is_front and not logged_in) ? 'container-fluid' : 'container' %}
+  {# Контейнер теперь всегда container-fluid для главной страницы #}
+  {% set main_container_class = 'container-fluid' %}
 
   <div class="{{ main_container_class }}">
+    {# НОВЫЙ РЕГИОН ДЛЯ РЕДАКТОРОВ #}
+    {% if page.editor_region %}
+      <div class="region region-editor-region mb-4"> {# mb-4 для отступа снизу #}
+        {{ page.editor_region }}
+      </div>
+    {% endif %}
+
     {% if page.highlighted %}
       <div class="region region-highlighted">
         {{ page.highlighted }}
@@ -64,46 +73,34 @@
     {% endif %}
 
     <div class="row">
-      {% set has_sidebar_content = page.sidebar ? true : false %}
-      {% set is_front_anonymous = is_front and not logged_in %}
-      {% set display_sidebar = has_sidebar_content and not is_front_anonymous %}
-
-      {# Исправленная секция для контента и сайдбара #}
+      {# Основной контент теперь всегда на всю ширину #}
       {% if page.content %}
-        {# Этот div теперь является прямым потомком .row и несет классы колонок #}
-        <div class="order-1 {{ display_sidebar ? 'col-lg-8 order-lg-1' : 'col-12 order-lg-1' }}">
-          {# Обёртка для изолированного стилизованного контента главной страницы #}
+        <div class="col-12">
           <div class="frontpage-wrapper">
-            <div class="region region-content"> {# Убраны классы order-* и col-* отсюда #}
+            <div class="region region-content">
               {{ page.content }}
             </div>
           </div>
         </div>
       {% endif %}
 
-      {% if display_sidebar %}
-        <aside class="site-sidebar col-lg-4 order-2 order-lg-2" role="complementary">
-          <div class="region region-sidebar">
-            {{ page.sidebar }}
-          </div>
-        </aside>
-      {% endif %}
-      {# Конец исправленной секции #}
+      {# Сайдбар полностью удален с главной страницы #}
 
+      {# Нижние регионы контента также теперь всегда на всю ширину #}
       {% if page.main_content_bottom_1 %}
-        <div class="region region-main-content-bottom-1 order-3 {{ display_sidebar ? 'col-lg-8 order-lg-3' : 'col-12 order-lg-3' }}">
+        <div class="region region-main-content-bottom-1 col-12 order-3">
           {{ page.main_content_bottom_1 }}
         </div>
       {% endif %}
 
       {% if page.main_content_bottom_2 %}
-        <div class="region region-main-content-bottom-2 order-4 {{ display_sidebar ? 'col-lg-8 order-lg-4' : 'col-12 order-lg-4' }}">
+        <div class="region region-main-content-bottom-2 col-12 order-4">
           {{ page.main_content_bottom_2 }}
         </div>
       {% endif %}
 
       {% if page.main_content_bottom_3 %}
-        <div class="region region-main-content-bottom-3 order-5 {{ display_sidebar ? 'col-lg-8 order-lg-5' : 'col-12 order-lg-5' }}">
+        <div class="region region-main-content-bottom-3 col-12 order-5">
           {{ page.main_content_bottom_3 }}
         </div>
       {% endif %}

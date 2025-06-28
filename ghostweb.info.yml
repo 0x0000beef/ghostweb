@@ -16,6 +16,7 @@ regions:
   header_left: 'Header Left (Logo, Slogan)'
   header_service_region: 'Header Service Region (Search, Social)'
   navigation_sticky_top: 'Navigation Sticky Top (Main Menu)'
+  editor_region: 'Editor Region (for admin menu)'
   highlighted: 'Highlighted (Announcements, Notifications)'
   breadcrumb: 'Breadcrumbs'
   content: 'Main Content (Materials, News)' # Стандартный регион Drupal
