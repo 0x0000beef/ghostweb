@@ -1,0 +1,44 @@
+# Подключение шрифта Golos с Google Fonts
+fonts:
+  css:
+    theme:
+      css/fonts.css: {}
+
+# Bootstrap CSS (подключается отдельно для контроля порядка)
+bootstrap-css:
+  css:
+    theme:
+      css/bootstrap/css/bootstrap.min.css: { weight: -20 } # Убедимся, что Bootstrap CSS загружается раньше
+
+# Глобальные стили темы
+global-styling:
+  css:
+    theme:
+      css/style.css: { weight: -10 }
+      css/layout.css: { weight: -9 }
+      css/components.css: { weight: -8 }
+      css/back-to-top.css: { weight: -7 }
+      css/branding.css: { weight: -6 }
+      # Стили для специфичных компонентов
+      css/breadcrumbs.css: { weight: -5.5 } # До mainmenu
+      css/slider.css: { weight: -5.4 }      # До mainmenu
+      css/mainmenu.css: { weight: -5 }
+      css/mobile.css: { weight: -4, media: screen and (max-width: 767.98px) } # Мобильные стили (Bootstrap уже адаптивен, это для доп. правок)
+
+  dependencies:
+    - core/normalize # Хорошая практика для сброса стилей браузера
+
+# Bootstrap JS (включая Popper)
+bootstrap-js:
+  js:
+    js/bootstrap/js/bootstrap.bundle.min.js: { minified: true, attributes: { defer: true } }
+  dependencies:
+    - core/jquery # Bootstrap JS все еще может требовать jQuery для некоторых компонентов, хотя многие работают без него. Drupal ядро предоставляет jQuery.
+
+# Глобальные скрипты темы
+global-scripts:
+  js:
+    js/script.js: { attributes: { defer: true } }
+  dependencies:
+    - core/jquery # Если ваши скрипты используют jQuery
+    - ghostweb/bootstrap-js # Убедимся, что Bootstrap JS загружен

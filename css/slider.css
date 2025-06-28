@@ -1,0 +1,39 @@
+/* БЛОКИ СЛАЙДЕР */
+
+/* --- Flex-контейнер, в котором лежат оба блока (слайдер и новости) --- */
+/* Берём непосредственный дочерний div внутри .region-content внутри .frontpage-wrapper */
+.frontpage-wrapper .region-content > div {
+  display: flex;           /* Располагаем дочерние блоки горизонтально */
+  gap: 20px;               /* Отступ между блоками */
+  align-items: flex-start; /* Выравнивание по верхнему краю */
+  flex-wrap: nowrap;       /* Запрет переноса блоков на новую строку */
+}
+
+/* --- Левый блок — слайдер --- */
+/* flex: 2 1 0 — означает, что он растёт в 2 раза сильнее правого блока */
+.frontpage-wrapper .region-content > div > .frontpage-slider-block {
+  flex: 2 1 0; 
+}
+
+/* --- Правый блок — новости заголовками --- */
+/* flex: 1 1 0 — значит занимает меньшую часть (примерно 1/3 ширины) */
+.frontpage-wrapper .region-content > div > .frontpage-news-headers-right {
+  flex: 1 1 0;
+}
+
+
+/* --- Адаптивная (мобильная) версия --- */
+@media (max-width: 1200px) {
+  /* Контейнер перестаёт быть flex, становится блочным — блоки будут вертикально */
+  .frontpage-wrapper .region-content > div  {
+    display: block;
+  }
+
+  /* Оба блока занимают 100% ширины с отступом снизу */
+  .frontpage-wrapper .region-content > div  > .frontpage-slider-block,
+  .frontpage-wrapper .region-content > div  > .frontpage-news-headers-right {
+    flex: none;         /* Отключаем flex */
+    width: 100%;        /* Занимаем всю ширину контейнера */
+    margin-bottom: 15px;/* Отступ снизу для разделения блоков */
+  }
+}

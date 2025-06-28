@@ -1,0 +1,34 @@
+{# Примерное имя файла: block--block-content--[UUID].html.twig или block--custom-frontpage-layout.html.twig #}
+{%
+  set classes = [
+    'block',
+    'block-' ~ configuration.provider|clean_class,
+    'block-' ~ plugin_id|clean_class,
+    label ? 'has-title',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if label %}
+    <h2{{ title_attributes.addClass('block-title') }}>{{ label }}</h2>
+  {% endif %}
+  {{ title_suffix }}
+  {% block content %}
+    {# Вот здесь начинается ваша кастомная разметка Bootstrap #}
+    <div class="content">
+      <div class="row">
+        <div class="col-lg-6 col-xl-8 mb-4 mb-lg-0"> {# Колонка для слайдера, как в вашем примере #}
+          {# Вывод блока слайдера. Используем Twig Tweak для удобства #}
+          {# Замените 'views_block:имя_представления_слайдера-id_отображения_блока' на ваш реальный ID #}
+          {# Например, 'views_block:slider_frontpage-block_1' #}
+          {{ drupal_block('views_block:glavnaya_novosti_v_karuseli-block_1', wrapper=false) }}
+        </div>
+        <div class="col-lg-6 col-xl-4"> {# Колонка для списка новостей #}
+          {# Вывод блока новостей. Замените ID #}
+          {# Например, 'views_block:all_news-frontpage_news_headersonright' #}
+          {{ drupal_block('views_block:frontpage_news_headersonright-block_1', wrapper=false) }}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+</div>

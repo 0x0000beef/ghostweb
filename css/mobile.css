@@ -1,0 +1,37 @@
+/* Дополнительные стили для мобильных устройств (экраны < 768px) */
+/* Bootstrap уже адаптивен, но здесь можно переопределить или добавить специфичные стили */
+
+/* Пример: уменьшить отступы для основного контента на мобильных */
+.main-content-wrapper {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Пример: изменить порядок колонок в футере или сделать их стеком */
+.site-footer-bottom-row .col-md-3 { /* Если в page.html.twig используется col-md-3 */
+  margin-bottom: 1.5rem; /* Добавить отступ снизу для каждой колонки в стеке */
+  text-align: center; /* Например, центрировать текст в колонках футера на мобильных */
+}
+.site-footer-bottom-row .col-md-3:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Сделать поиск и соцсети в шапке более компактными или перенести */
+.region-header-service-region {
+  /* flex-direction: column; */ /* Пример: расположить элементы друг под другом */
+  /* align-items: flex-start; */
+  /* margin-top: 0.5rem; */
+}
+
+/* Уменьшить размер шрифта для заголовков на мобильных */
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.5rem; }
+
+/* Кнопка "наверх" может быть чуть меньше или иметь другие отступы */
+#backToTopBtn {
+  bottom: 15px;
+  right: 15px;
+  padding: 8px 12px;
+  font-size: 16px;
+}

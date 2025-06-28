@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Шаблон блока menumenumenu с кнопкой сворачивания.
+ */
+#}
+
+<div id="menumenumenu" class="region menumenumenu-block">
+  <h2 class="block-title" tabindex="0" role="button" aria-expanded="true" aria-controls="menumenumenu-content">
+    {{ configuration.label }}
+    <span class="toggle-arrow" aria-hidden="true"></span>
+  </h2>
+
+  <div id="menumenumenu-content" class="block-content">
+    {{ content }}
+  </div>
+</div>

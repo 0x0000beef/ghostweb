@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Ghostweb theme implementation for the navigation_sticky_top region.
+ *
+ * This example removes the default region div wrapper if there's content,
+ * assuming the blocks within (like a menu block) will provide their own
+ * suitable wrapper (e.g., <nav class="navbar ...">).
+ *
+ * If you want the default div.region wrapper, just delete this file.
+ */
+#}
+{% if content %}
+  {{ content }}
+{% endif %}

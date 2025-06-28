@@ -1,0 +1,245 @@
+/* Стили для отдельных компонентов: кнопки, меню, карточки и т.д. */
+
+/* Пример стилизации системного меню, если не используется Bootstrap Navbar */
+/*
+.region-navigation-sticky-top ul.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.region-navigation-sticky-top ul.menu li {
+  margin-right: 1rem;
+}
+
+.region-navigation-sticky-top ul.menu li a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+*/
+
+/* Стили для карточек (если используются стандартные Drupal блоки или Views) */
+.card-custom { /* Пример кастомной карточки */
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+}
+.card-custom__header {
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.card-custom__body {
+  padding: 1.25rem;
+}
+.card-custom__title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+
+
+
+
+/*
+ * Стили для меню в блоках с классом .custom-region-block-menu
+ * Превращает вертикальный список в адаптивную многоколоночную сетку.
+ */
+
+.custom-region-block-menu ul {
+  /* 1. Убираем маркеры и стандартные отступы списка */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  /* 2. Превращаем меню в многоколоночную сетку */
+  display: grid;
+  /* Эта магия делает сетку адаптивной:
+     - auto-fill: автоматически создает столько колонок, сколько поместится.
+     - minmax(200px, 1fr): каждая колонка будет минимум 200px в ширину.
+       Если останется свободное место, все колонки равномерно его поделят.
+     Меняйте 200px, чтобы управлять шириной и количеством колонок.
+  */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  
+  /* Задаем расстояние между элементами сетки */
+  gap: 1em; /* Расстояние и по горизонтали, и по вертикали */
+}
+
+/*
+ * Стили для меню в блоках с классом .custom-region-block-menu
+ * Превращает вертикальный список в адаптивную многоколоночную сетку
+ * и стилизует вложенные меню (второй уровень).
+ */
+
+/*
+ * Стили для меню в блоках с классом .custom-region-block-menu
+ * Превращает список в адаптивную многоколоночную сетку простых ссылок
+ * и стилизует вложенные меню (второй уровень).
+ */
+/*
+ * Стили для меню в блоках с классом .custom-region-block-menu
+ * Превращает список в адаптивную многоколоночную сетку простых ссылок
+ * с SVG-иконками и стилизацией вложенных меню.
+ */
+
+/* --- СТИЛИ ДЛЯ ПЕРВОГО УРОВНЯ МЕНЮ --- */
+
+.custom-region-block-menu > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  row-gap: 0.5em;
+  column-gap: 2em;
+}
+
+/* Стилизуем непосредственно ссылки в меню первого уровня */
+.custom-region-block-menu > ul > li > a {
+  font-weight: bold;
+  font-size: smaller;
+  text-decoration: none;
+  color: #34495e;
+  padding: 0.5em 0;
+  transition: color 0.2s;
+  
+  /* НОВОЕ: Используем Flexbox для идеального выравнивания иконки и текста */
+  display: flex;
+  align-items: flex-start;
+}
+
+/* НОВОЕ: Добавляем SVG-иконку перед пунктами ПЕРВОГО уровня */
+.custom-region-block-menu > ul > li > a::before {
+  /* Вставляем SVG как Data URI. 'currentColor' позволяет иконке наследовать цвет текста */
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor'%3e%3cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  
+  /* Задаем размеры и отступ для иконки */
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  
+  /* Предотвращаем сжатие иконки, если текст очень длинный */
+  flex-shrink: 0;
+}
+
+
+/* Эффект при наведении курсора на пункт первого уровня */
+.custom-region-block-menu > ul > li > a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+
+/* --- СТИЛИ ДЛЯ ВТОРОГО УРОВНЯ МЕНЮ --- */
+
+.custom-region-block-menu ul ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.75em 0 0 1.2em;
+}
+
+.custom-region-block-menu ul ul li a {
+  display: flex; /* Также используем flex для выравнивания */
+  align-items: flex-start;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: normal;
+  padding: 0.4em 0;
+  transition: color 0.2s;
+}
+
+.custom-region-block-menu ul ul li a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Символ иерархии для ВТОРОГО уровня остается без изменений */
+.custom-region-block-menu ul ul li a::before {
+  content: '└─'; /* Убрал пробел из контента, чтобы лучше управлять им через margin */
+  color: #7f8c8d;
+  font-weight: normal;
+  margin-right: 0.5em;
+  flex-shrink: 0;
+}
+
+
+
+
+
+
+
+
+
+/* теги */
+
+/*
+ * ===================================================================
+ * Финальные стили для поля тегов (минималистичный вариант)
+ * - Без иконок
+ * - Плавная смена цвета при наведении, без анимации движения
+ * ===================================================================
+ */
+
+/* 1. Главный контейнер .tags-section */
+.tags-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75em;
+}
+
+/* 2. Надпись "Теги:" */
+.tags-section .field__label {
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* 3. Контейнер для всех ссылок-тегов */
+.tags-section .field__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+}
+
+/* 4. Стилизация самой ссылки-тега */
+.tags-section .field__item a {
+  /* ИЗМЕНЕНО: flex больше не нужен, так как нет иконки для выравнивания */
+  display: inline-block; 
+  font-size: 0.9em;
+  text-decoration: none;
+  color: #495057;
+  background-color: #e9ecef;
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+  border: 1px solid #dee2e6;
+  /* Эта строка отвечает за плавность смены цвета */
+  transition: all 0.2s ease-in-out; 
+}
+
+/*
+ * 5. БЛОК С ИКОНКОЙ УДАЛЕН
+ * Правило .tags-section .field__item a::before было полностью удалено.
+ */
+
+/* * 6. Эффект при наведении курсора на тег
+ * Оставили только смену цвета.
+ */
+.tags-section .field__item a:hover {
+  color: #fff;
+  background-color: #007bff; /* Пример синего цвета, можете поменять */
+  border-color: #007bff;
+  /* Свойство transform и box-shadow удалены, чтобы убрать анимацию "приподнимания" */
+}
+
+/*
+ * Добавляем вертикальный отступ снизу для блока тегов,
+ * но только в режиме отображения "Анонс" (teaser).
+ */
+.tags-section {
+  margin-bottom: 1.5rem; /* Стандартный отступ, равный примерно 24px */
+}

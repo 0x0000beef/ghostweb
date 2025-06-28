@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Кастомный шаблон для поля field_tags.
+ * Выводит теги в виде "пилюль" с оберткой .tags-section.
+ */
+#}
+{% set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+  'field--type-' ~ field_type|clean_class,
+  'field--label-' ~ label_display,
+  'tags-section',  
+  'mt-4',
+  'pt-3',
+  'border-top'
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if not label_hidden %}
+    <div{{ title_attributes.addClass('field__label', 'font-weight-bold') }}>{{ label }}</div>
+  {% endif %}
+  <div{{ content_attributes.addClass('field__items') }}>
+    {% for item in items %}
+      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+    {% endfor %}
+  </div>
+</div>

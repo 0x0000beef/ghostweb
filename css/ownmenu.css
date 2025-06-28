@@ -1,0 +1,89 @@
+/* Основные стили для меню */
+nav {
+  background-color: #4CAF50; /* Зеленый фон для меню */
+  padding: 10px 20px; /* Отступы вокруг меню */
+}
+
+nav ul {
+  list-style-type: none; /* Убираем стандартные маркеры списка */
+  margin: 0;
+  padding: 0;
+  display: flex !important; /* Горизонтальное расположение элементов */
+  justify-content: flex-start; /* Выравнивание по левому краю */
+}
+
+nav ul li {
+  position: relative; /* Необходимо для подменю */
+  margin-right: 20px; /* Отступ между элементами меню */
+}
+
+nav ul li a {
+  color: white; /* Цвет текста */
+  text-decoration: none; /* Убираем подчеркивание ссылок */
+  font-weight: bold; /* Жирный шрифт для ссылок */
+  padding: 10px 15px; /* Отступы внутри ссылок */
+  display: block; /* Блочный элемент для лучшего кликабельного размера */
+  border-radius: 4px; /* Скругленные углы для ссылок */
+  transition: background-color 0.3s; /* Плавное изменение фона */
+}
+
+/* Эффект при наведении на элементы меню */
+nav ul li a:hover {
+  background-color: #388E3C; /* Более темный зеленый при наведении */
+}
+
+/* Стиль для подменю */
+nav ul li ul {
+  display: none; /* Подменю скрыто по умолчанию */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #81C784; /* Светло-зеленый фон для подменю */
+  padding: 10px 0;
+  border-radius: 4px;
+  min-width: 180px; /* Минимальная ширина подменю */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Тень для подменю */
+}
+
+/* Эффект при наведении на родительский элемент, чтобы подменю появилось */
+nav ul li:hover > ul {
+  display: block; /* Показываем подменю при наведении на родительский элемент */
+}
+
+/* Стили для элементов в подменю */
+nav ul li ul li {
+  margin: 0;
+}
+
+nav ul li ul li a {
+  background-color: #66BB6A; /* Немного более темный зеленый для подменю */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+/* Эффект при наведении на элементы подменю */
+nav ul li ul li a:hover {
+  background-color: #388E3C; /* Еще более темный зеленый при наведении */
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Переводим меню в вертикальное положение на мобильных */
+  }
+
+  nav ul li {
+    margin-right: 0;
+    margin-bottom: 10px; /* Отступы между пунктами меню */
+  }
+
+  nav ul li a {
+    padding: 12px 15px; /* Увеличиваем паддинги на мобильных */
+  }
+
+  nav ul li ul {
+    position: static; /* Подменю становится нормальным списком для мобильных */
+    width: 100%; /* Подменю будет занимать всю ширину */
+  }
+}

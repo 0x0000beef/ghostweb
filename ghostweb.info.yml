@@ -1,0 +1,36 @@
+name: Ghostweb
+type: theme
+description: 'Легковесный, аккуратный и современный адаптивный шаблон на Bootstrap 5 для Drupal 10.'
+core_version_requirement: ^10
+base theme: false # Полностью автономная тема
+
+libraries:
+  - ghostweb/global-styling
+  - ghostweb/bootstrap-css # Bootstrap CSS подключается отдельно, чтобы быть раньше кастомных стилей
+  - ghostweb/bootstrap-js
+  - ghostweb/global-scripts
+  - ghostweb/fonts # Подключение шрифтов
+
+regions:
+  service_top: 'Service Top (for scripts)'
+  header_left: 'Header Left (Logo, Slogan)'
+  header_service_region: 'Header Service Region (Search, Social)'
+  navigation_sticky_top: 'Navigation Sticky Top (Main Menu)'
+  highlighted: 'Highlighted (Announcements, Notifications)'
+  breadcrumb: 'Breadcrumbs'
+  content: 'Main Content (Materials, News)' # Стандартный регион Drupal
+  main_content_bottom_1: 'Main Content Bottom 1 (Persona Card)'
+  main_content_bottom_2: 'Main Content Bottom 2 (Banners/Slider)'
+  main_content_bottom_3: 'Main Content Bottom 3 (Banners/Cards)'
+  sidebar: 'Sidebar (Menu, Banners)'
+  mid_footer: 'Mid Footer (Small Banners Info)'
+  bottom_footer_col_1: 'Bottom Footer Column 1'
+  bottom_footer_col_2: 'Bottom Footer Column 2'
+  bottom_footer_col_3: 'Bottom Footer Column 3'
+  bottom_footer_col_4: 'Bottom Footer Column 4'
+  copyrights: 'Copyrights'
+  service_bottom: 'Service Bottom (for scripts)'
+  disabled_blocks: 'Disabled Blocks (Temporarily unused)'
+
+# Drupal будет искать favicon в корне сайта, но можно указать и здесь
+# favicon: images/favicon.png

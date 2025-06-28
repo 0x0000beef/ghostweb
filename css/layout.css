@@ -1,0 +1,201 @@
+/* Стили для основной разметки и регионов */
+
+
+/* Service Top / Bottom (для скриптов, обычно невидимы) */
+.region-service-top,
+.region-service-bottom {
+  /* Можно скрыть, если они только для невидимых скриптов */
+  /* display: none; */
+  padding: 0;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Header Area */
+.site-header-top-row { /* Обёртка для header_left и header_service_region */
+  background-color: #ffffff; /* Пример фона для шапки */
+  /* padding-top: 1rem;
+  padding-bottom: 1rem; */
+  border-bottom: 1px solid #dee2e6;
+}
+
+.region-header-left .site-branding__name a,
+.region-header-left .site-branding__slogan {
+  color: #333; /* Цвет текста для названия и слогана */
+}
+.region-header-left .site-branding__name a:hover {
+  text-decoration: none;
+}
+
+.region-header-service-region {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.region-header-service-region .block { /* Блоки в этом регионе (поиск, соцсети) */
+  margin-left: 1rem;
+}
+
+/* Navigation Sticky Top */
+/* Обновленный стиль для блока с навигацией */
+.region-navigation-sticky-top {
+  position: sticky; /* Используем !important, чтобы переопределить возможные стили из _position.scss */
+  top: 0;
+  z-index: 1000;
+  /* background-color: #343a40; */
+  padding: 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.region-navigation-sticky-top nav.navbar { /* Если используете Bootstrap Navbar */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.region-navigation-sticky-top .nav-link { /* Ссылки в главном меню */
+  color: rgba(255,255,255,.75);
+}
+.region-navigation-sticky-top .nav-link:hover,
+.region-navigation-sticky-top .nav-link.active {
+  color: #fff;
+}
+
+
+/* Main Content Area Wrapper */
+.main-content-wrapper {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Region-Content Padding */
+.region-content > div {
+/*  padding: 0 1rem; */
+}
+
+/* Sidebar */
+.region-sidebar {
+  /* Стили для сайдбара, если нужны специфичные отступы или фон */
+  /* background-color: #e9ecef; */
+  /* padding: 1rem; */
+}
+.region-sidebar .block {
+  margin-bottom: 1.5rem;
+}
+.region-sidebar .block h2 { /* Заголовки блоков в сайдбаре */
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+
+/* Mid Footer */
+.region-mid-footer {
+  background-color: #e9ecef; /* Пример фона */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+/* Bottom Footer (4-column) */
+.site-footer-bottom-row {
+  background-color: #343a40; /* Темный фон для подвала */
+  color: #adb5bd;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.site-footer-bottom-row .region {
+  padding: 0; /* Убираем дефолтный отступ региона */
+}
+.site-footer-bottom-row h2.block-title { /* Заголовки блоков в подвале */
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.site-footer-bottom-row a {
+  color: #ced4da;
+}
+.site-footer-bottom-row a:hover {
+  color: #ffffff;
+}
+.site-footer-bottom-row ul {
+  list-style: none;
+  padding-left: 0;
+}
+.site-footer-bottom-row ul li {
+  margin-bottom: 0.5rem;
+}
+
+
+/* Copyrights */
+.region-copyrights {
+  background-color: #212529; /* Очень темный фон */
+  color: #6c757d;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+.region-copyrights a {
+  color: #8d969e;
+}
+.region-copyrights a:hover {
+  color: #adb5bd;
+}
+
+/* Стили для регионов внутри main_container (теперь это отдельные регионы) */
+.region-highlighted,
+.region-main-content-bottom-1,
+.region-main-content-bottom-2,
+.region-main-content-bottom-3 {
+  margin-bottom: 1.5rem; /* Отступы между этими регионами */
+}
+
+/* НАСТРОЙКА РЕГИОНА С ПОС БАННЕРАМИ, ХАК ДЛЯ ВЫСОТЫ ПОС ЕСТЬ В САМОМ БЛОКЕ */
+.region-main-content-bottom-2 > div {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap; /* или wrap, если нужно */
+}
+
+/* Ширина блоков по умолчанию */
+.additional-widget-left {
+  flex: 0 0 60%;
+}
+
+.additional-widget-right {
+  flex: 0 0 40%;
+}
+
+/* При ширине меньше 1280px - вертикально и ширина 100% */
+@media (max-width: 1279px) {
+  .region-main-content-bottom-2 > div {
+    flex-direction: column;
+  }
+  
+  .additional-widget-left,
+  .additional-widget-right {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+
+/* ЗАПАС НА БУДУЩЕЕ ДЛЯ ДОПОЛНИТЕЛЬНЫХ ВИДЖЕТОВ */
+
+.additional-widget-1 { flex: 0 0 40%; }
+.additional-widget-2 { flex: 0 0 30%; }
+.additional-widget-3 { flex: 0 0 30%; }
+
+@media (max-width: 1279px) {
+  .region-main-content-bottom-2 > div {
+    flex-direction: column;
+  }
+  .additional-widget-1,
+  .additional-widget-2,
+  .additional-widget-3 {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+
+/* КОНЕЦ ЗАПАСА */

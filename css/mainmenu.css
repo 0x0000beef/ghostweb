@@ -1,0 +1,308 @@
+/* ЦВЕТА МЕНЮ */
+
+/*
+ * Sample CSS to add Superfish CSS to themes.
+ *
+ * Instructions:
+ *
+ * 1. Change the #block-ghostweb-mainmenu-superfish (below) to the ID of your Superfish block.
+ *
+ * 2. Add the CSS to your theme, either as a separate CSS file or as a part of
+ *    the main CSS file.
+ *
+ * 3. Note that by removing the .sf-style-none, the style will be applied to
+ *    the menu regardless of the "Style" selected in the Superfish block
+ *    configuration.
+ *
+ */
+
+/* Определения цветов (можете вынести в переменные, если используете препроцессор или CSS переменные) */
+:root {
+  --dark-blue: #000080; /* Замените на ваш темно-синий */
+  --lighter-blue: #4169E1; /* Замените на ваш светло-синий */
+  --white-text: #FFFFFF;
+  /* Цвета для описаний и индикаторов из старого CSS, можно тоже обновить при желании */
+  --original-dark-green-text: #008000;
+  --original-forest-green-text: #228B22;
+  --original-very-light-green-bg: #e6f9e6;
+  --original-medium-light-green-bg-hover: #a3d6a3;
+}
+
+/* Применяем Flexbox к контейнеру, который содержит меню */
+#block-ghostweb-mainmenu-superfish {
+  display: flex;
+  flex-wrap: wrap; /* Обеспечиваем обтекание элементов, если их больше, чем можно уместить в одном ряду */
+  align-items: center; /* Выравнивание по вертикали */
+  justify-content: flex-start; /* Выравнивание по горизонтали, если нужно */
+}
+
+/* Убираем паддинги и маргины, которые могут конфликтовать (ОБЪЕДИНЕНО ИЗ ОРИГИНАЛА) */
+/* Примечание: float: left; здесь может конфликтовать/быть излишним, если .sf-style-none это UL,
+   являющийся прямым потомком flex-контейнера #block-ghostweb-mainmenu-superfish.
+   Оставлено как в оригинале, но стоит проверить поведение. */
+#block-ghostweb-mainmenu-superfish .sf-style-none {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-navbar {
+  width: 100%;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none ul {
+  padding-left: 0;
+}
+
+/* === ОБЩИЕ СТИЛИ ДЛЯ ССЫЛОК И ТЕКСТА В МЕНЮ === */ /* НОВОЕ / ИЗМЕНЕНО */
+#block-ghostweb-mainmenu-superfish .sf-style-none a,
+#block-ghostweb-mainmenu-superfish .sf-style-none span.nolink {
+  padding: 0.75em 1em;
+  font-weight: 600; /* ИЗМЕНЕНО: Жирность текста для всех пунктов */
+  text-decoration: none;
+  display: block; /* Для корректной работы padding и background */
+  line-height: 1.25; /* Пример базовой высоты строки */
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none a.sf-with-ul,
+#block-ghostweb-mainmenu-superfish .sf-style-none span.nolink.sf-with-ul {
+  padding-right: 2.25em; /* Оставляем место для индикатора */
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl a.sf-with-ul,
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl span.nolink.sf-with-ul {
+  padding-left: 2.25em;
+  padding-right: 1em;
+}
+
+/* === ПЕРВЫЙ УРОВЕНЬ МЕНЮ === */ /* ИЗМЕНЕНО */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li {
+  background: none; /* ИЗМЕНЕНО: Нет фона для первого уровня по умолчанию */
+  position: relative; /* Для позиционирования подменю */
+}
+
+/* Ссылки первого уровня */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > a,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > span.nolink {
+  color: var(--dark-blue); /* ИЗМЕНЕНО: Темно-синий текст */
+}
+
+/* Наведение на пункт первого уровня (LI) или когда LI активен/открыт (sfHover) */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li:hover,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li.sfHover { /* sfHover для активного/открытого пункта с подменю */
+  background: var(--dark-blue); /* ИЗМЕНЕНО: Темно-синий фон для LI */
+  outline: 0;
+}
+/* Текст ссылки внутри LI при наведении/активности родительского LI */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li:hover > a,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li.sfHover > a,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li:hover > span.nolink,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li.sfHover > span.nolink {
+  color: var(--white-text); /* ИЗМЕНЕНО: Белый текст */
+  background: none; /* Фон на LI, а не на A */
+}
+
+/* Дополнительно: стили для фокуса на самой ссылке (если навигация клавиатурой) */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > a:focus,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > a:active {
+  background: var(--dark-blue); /* ИЗМЕНЕНО: Темно-синий фон для 'a' */
+  color: var(--white-text);       /* ИЗМЕНЕНО: Белый текст для 'a' */
+  outline: 1px dotted var(--white-text); /* Пример аутлайна для фокуса */
+}
+
+/* === ПОДМЕНЮ (ВСЕ УРОВНИ ВЛОЖЕННОСТИ) === */ /* ИЗМЕНЕНО */
+#block-ghostweb-mainmenu-superfish .sf-style-none ul { /* Контейнер подменю UL */
+  background: var(--dark-blue); /* ИЗМЕНЕНО: Темно-синяя подложка для всех подменю */
+  /* Superfish обычно позиционирует подменю абсолютно */
+}
+
+/* Элементы списка в подменю (li) */
+#block-ghostweb-mainmenu-superfish .sf-style-none li li {
+  background: none; /* ИЗМЕНЕНО: Убираем фон с li, так как ul уже имеет фон */
+  position: relative; /* Для позиционирования под-подменю */
+}
+
+/* Ссылки в подменю */
+#block-ghostweb-mainmenu-superfish .sf-style-none li ul a, /* Для 2-го уровня и глубже */
+#block-ghostweb-mainmenu-superfish .sf-style-none li ul span.nolink {
+  color: var(--white-text); /* ИЗМЕНЕНО: Белый текст для пунктов подменю */
+}
+
+/* Наведение/активность на пункт подменю (LI) */
+#block-ghostweb-mainmenu-superfish .sf-style-none li li:hover,
+#block-ghostweb-mainmenu-superfish .sf-style-none li li.sfHover { /* sfHover для Superfish JS */
+  background: var(--lighter-blue); /* ИЗМЕНЕНО: Чуть более светлый синий фон для всего LI при наведении */
+  outline: 0;
+}
+/* Ссылки внутри LI при наведении/активности родительского LI в подменю */
+#block-ghostweb-mainmenu-superfish .sf-style-none li li:hover > a,
+#block-ghostweb-mainmenu-superfish .sf-style-none li li.sfHover > a,
+#block-ghostweb-mainmenu-superfish .sf-style-none li li:hover > span.nolink,
+#block-ghostweb-mainmenu-superfish .sf-style-none li li.sfHover > span.nolink {
+  color: var(--white-text); /* Текст остается белым */
+  background: none; /* Фон на LI */
+}
+
+/* Дополнительно: стили для фокуса на самой ссылке в подменю */
+#block-ghostweb-mainmenu-superfish .sf-style-none li li a:focus,
+#block-ghostweb-mainmenu-superfish .sf-style-none li li a:active {
+  background: var(--lighter-blue); /* ИЗМЕНЕНО: Чуть более светлый синий фон для 'a' */
+  color: var(--white-text);       /* ИЗМЕНЕНО: Белый текст для 'a' */
+}
+
+
+/* === ПОЗИЦИОНИРОВАНИЕ ПОДМЕНЮ === */ /* ИЗМЕНЕНО / УТОЧНЕНО */
+/* Позиционирование первого выпадающего подменю */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li:hover > ul,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li.sfHover > ul {
+  top: 100%; /* ИЗМЕНЕНО: Выпадающее меню появляется под родительским элементом */
+  left: 0;
+  margin-top: 0; /* Убедимся, что нет лишнего отступа */
+}
+
+/* Позиционирование подменю второго и последующих уровней (обычно сбоку) */
+#block-ghostweb-mainmenu-superfish .sf-style-none li li:hover > ul,
+#block-ghostweb-mainmenu-superfish .sf-style-none li li.sfHover > ul {
+  top: 0; /* ИЗМЕНЕНО: Выравнивание по верху родительского li */
+  left: 100%; /* Справа от родительского li */
+  margin-top: 0; /* ИЗМЕНЕНО: Убираем вертикальный отступ */
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl li li:hover > ul,
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl li li.sfHover > ul {
+  left: auto;
+  right: 100%; /* Слева от родительского li для RTL */
+  margin-top: 0; /* ИЗМЕНЕНО: Убираем вертикальный отступ */
+}
+
+/* --- ОСТАЛЬНЫЕ СТИЛИ ИЗ ОРИГИНАЛА (цвета можно адаптировать при необходимости) --- */
+
+#block-ghostweb-mainmenu-superfish .sf-style-none span.sf-description {
+  color: var(--original-forest-green-text); /* лесной зеленый (можно изменить) */
+  display: block;
+  font-size: 0.833em;
+  line-height: 1.5;
+  margin: 5px 0 0 5px;
+  padding: 0;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl span.sf-description {
+  margin: 5px 5px 0 0;
+}
+
+/* Индикаторы. Цвета можно изменить на var(--white-text) или var(--lighter-blue) если они на темном фоне */
+#block-ghostweb-mainmenu-superfish .sf-sub-indicator:after {
+  content: "▼";
+  color: var(--white-text); /* ИЗМЕНЕНО: Белый индикатор на синем фоне первого уровня при наведении */
+}
+/* Специфичность для индикаторов первого уровня, чтобы цвет менялся */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > a > .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > span.nolink > .sf-sub-indicator:after {
+    color: var(--dark-blue); /* ИЗМЕНЕНО: Изначально темно-синий */
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none > li:hover > a > .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li.sfHover > a > .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li:hover > span.nolink > .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li.sfHover > span.nolink > .sf-sub-indicator:after {
+    color: var(--white-text); /* ИЗМЕНЕНО: Белый при наведении на пункт первого уровня */
+}
+
+/* Индикаторы для подменю (уже на темно-синем фоне) */
+#block-ghostweb-mainmenu-superfish ul .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-vertical .sf-sub-indicator:after {
+  content: "►";
+  color: var(--white-text); /* ИЗМЕНЕНО: Белый индикатор на темно-синем фоне подменю */
+}
+#block-ghostweb-mainmenu-superfish .sf-navbar ul .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-accordion .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-accordion.sf-accordion-with-buttons .sf-accordion-button:after {
+  content: "▼";
+  /* color: var(--original-dark-green-text); /* Можно обновить */
+}
+#block-ghostweb-mainmenu-superfish .sf-navbar ul ul .sf-sub-indicator:after {
+  content: "►";
+  /* color: var(--original-dark-green-text); /* Можно обновить */
+}
+#block-ghostweb-mainmenu-superfish .sf-accordion.sf-accordion-with-buttons li.sf-expanded > .sf-accordion-button:after {
+  content: "▲";
+}
+#block-ghostweb-mainmenu-superfish .sf-horizontal.rtl ul .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-vertical.rtl .sf-sub-indicator:after,
+#block-ghostweb-mainmenu-superfish .sf-navbar.rtl ul ul .sf-sub-indicator:after {
+  content: "◄";
+  color: var(--white-text); /* ИЗМЕНЕНО: Белый индикатор на темно-синем фоне подменю для RTL */
+}
+
+/* Стили для аккордеона - цвета остались оригинальные, можно обновить */
+#block-ghostweb-mainmenu-superfish div.sf-accordion-toggle.sf-style-none a {
+  background: var(--original-very-light-green-bg);
+  color: var(--original-dark-green-text);
+  padding: 1em;
+}
+#block-ghostweb-mainmenu-superfish div.sf-accordion-toggle.sf-style-none a.sf-expanded,
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li.sf-expanded {
+  background: var(--original-medium-light-green-bg-hover);
+}
+#block-ghostweb-mainmenu-superfish div.sf-accordion-toggle.sf-style-none a.sf-expanded,
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li.sf-expanded > a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li.sf-expanded > span.nolink {
+  font-weight: bold; /* font-weight: 600; уже глобально, но 'bold' может быть > 600 */
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li a.sf-accordion-button {
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 499;
+}
+/* Отступы для аккордеона оставлены как есть */
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li span.nolink {
+  padding-left: 2em;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li li span.nolink {
+  padding-left: 3em;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li li li span.nolink {
+  padding-left: 4em;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li li li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.sf-accordion li li li li li span.nolink {
+  padding-left: 5em;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li span.nolink {
+  padding-left: auto;
+  padding-right: 2em;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li li span.nolink {
+  padding-left: auto;
+  padding-right: 3em;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li li li span.nolink {
+  padding-left: auto;
+  padding-right: 4em;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li li li li a,
+#block-ghostweb-mainmenu-superfish .sf-style-none.rtl.sf-accordion li li li li li span.nolink {
+  padding-left: auto;
+  padding-right: 5em;
+}
+
+/* Стили для многоколоночных меню - цвета остались оригинальные, можно обновить */
+#block-ghostweb-mainmenu-superfish .sf-style-none li.sf-multicolumn-wrapper ol,
+#block-ghostweb-mainmenu-superfish .sf-style-none li.sf-multicolumn-wrapper ol li {
+  margin: 0;
+  padding: 0;
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none li.sf-multicolumn-wrapper a.menuparent,
+#block-ghostweb-mainmenu-superfish .sf-style-none li.sf-multicolumn-wrapper span.nolink.menuparent {
+  font-weight: bold; /* font-weight: 600; уже глобально */
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none li.sf-multicolumn-wrapper {
+  /* background: var(--original-medium-light-green-bg-hover); */ /* Оригинальный цвет */
+  background: var(--dark-blue); /* ИЗМЕНЕНО: Если хотите согласованности, можно сделать так */
+}
+#block-ghostweb-mainmenu-superfish .sf-style-none li.sf-multicolumn-wrapper li {
+  background: transparent;
+}
+
+/* КОНЕЦ НАСТРОЙКИ МЕНЮ */

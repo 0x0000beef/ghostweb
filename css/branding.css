@@ -1,0 +1,60 @@
+/* Основные стили для блока брендинга */
+.site-branding {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px; /* Расстояние между изображением и текстом */
+  line-height: 1.25; /* расстояние между строками по вертикали */
+}
+
+.site-branding__logo img {
+  width: 40px; /* Ограничиваем ширину до 60px */
+  height: 40px; /* Ограничиваем высоту до 60px */
+  object-fit: contain; /* Сохраняем пропорции изображения */
+}
+
+.site-branding__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-branding__name {
+  font-size: .875rem;
+  font-weight: bold;
+}
+
+.site-branding__slogan {
+  font-size: 0.725rem;
+  font-weight: normal;
+  color: #666; /* Цвет для слогана */
+}
+
+/* Стили для ссылок */
+.site-branding__logo a,
+.site-branding__name a {
+  text-decoration: none;
+  color: inherit; /* Сохраняем цвет, унаследованный от родителя */
+}
+
+.site-branding__logo a:hover,
+.site-branding__name a:hover {
+  text-decoration: underline; /* Подчеркиваем ссылки при наведении */
+}
+
+/* Адаптивность для мобильных версий */
+@media (max-width: 768px) {
+  .site-branding {
+    flex-direction: column; /* На мобильных устройствах элементы будут располагаться вертикально */
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-branding__logo img {
+    width: 50px; /* Немного уменьшаем размер логотипа на мобильных */
+    height: 50px;
+  }
+
+  .site-branding__name {
+    font-size: 1.25rem; /* Немного уменьшаем размер шрифта для названия */
+  }
+}

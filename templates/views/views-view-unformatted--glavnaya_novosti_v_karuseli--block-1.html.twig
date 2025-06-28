@@ -1,0 +1,35 @@
+{# themes/custom/ghostweb/templates/views/views-view-unformatted--slider-frontpage--block-1.html.twig #}
+{% if title %}
+  <h3>{{ title }}</h3> {# Заголовок блока представления, если он есть и нужен #}
+{% endif %}
+<div id="homepageCarousel" class="carousel slide" data-bs-ride="carousel"{% if view.result|length > 1 %} data-bs-interval="5000"{% endif %}> {# data-bs-interval для автопрокрутки, если слайдов больше одного #}
+  {# Индикаторы (точки внизу слайдера) - отображаем, если больше одного слайда #}
+  {% if view.result|length > 1 %}
+    <div class="carousel-indicators">
+      {% for key, row_data in view.result %} {# Используем view.result для получения индекса #}
+        <button type="button" data-bs-target="#homepageCarousel" data-bs-slide-to="{{ loop.index0 }}" class="{{ loop.first ? 'active' : '' }}" aria-current="{{ loop.first ? 'true' : 'false' }}" aria-label="Slide {{ loop.index }}"></button>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {# Содержимое слайдов #}
+  <div class="carousel-inner">
+    {% for row in rows %} {# rows - это уже отрендеренные наборы полей для каждого слайда #}
+      <div class="carousel-item{{ loop.first ? ' active' : '' }}">
+        {{ row.content }} {# row.content содержит HTML всех полей для текущего слайда #}
+      </div>
+    {% endfor %}
+  </div>
+
+  {# Кнопки "Вперед/Назад" - отображаем, если больше одного слайда #}
+  {% if view.result|length > 1 %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#homepageCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#homepageCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  {% endif %}
+</div>

@@ -1,0 +1,35 @@
+{# themes/custom/ghostweb/templates/views/views-view-fields--slider-frontpage--block-1.html.twig #}
+{# Этот шаблон отвечает за вывод полей *одного* слайда. #}
+{# Предполагается, что в Представлении вы добавили поля с машинными именами: #}
+{# 'field_image' - для изображения #}
+{# 'created' - для даты создания (или 'authored_on') #}
+{# 'title' - для заголовка (стандартное поле заголовка материала) #}
+{# 'field_slider_caption' - для текста подписи (если есть такое поле) #}
+
+{% if fields.field_image.content %}
+  {# Для поля изображения в настройках Представления (UI) в "Переписать результаты" -> "Стилевые настройки" #}
+  {# можно попытаться добавить класс "d-block w-100", если это не делается автоматически стилем изображения. #}
+  {# Либо убедитесь, что ваш стиль изображения делает его адаптивным. #}
+  {{ fields.field_image.content }}
+{% endif %}
+
+{# Показываем блок carousel-caption, если есть дата, заголовок или подпись #}
+{% if fields.created.content or fields.title.content or fields.field_slider_caption.content %}
+  <div class="carousel-caption">
+    {# Дата создания с иконкой календаря #}
+    {% if fields.created.content %} {# Замените 'created' на реальное машинное имя вашего поля даты, если оно другое #}
+      <p class="slide-created-date">
+        <span class="icon-calendar" aria-hidden="true"></span> {# Место для иконки календаря #}
+        {{ fields.created.content }}
+      </p>
+    {% endif %}
+
+    {% if fields.title.content %}
+      <h5>{{ fields.title.content }}</h5> {# Ссылка уже встроена из View, |trim убран ранее #}
+    {% endif %}
+
+    {% if fields.field_slider_caption.content %}
+      <p>{{ fields.field_slider_caption.content|striptags|trim }}</p>
+    {% endif %}
+  </div>
+{% endif %}
