@@ -243,3 +243,269 @@
 .tags-section {
   margin-bottom: 1.5rem; /* Стандартный отступ, равный примерно 24px */
 }
+
+
+
+
+
+/*
+ * Стили для административного меню в Editor Region
+ */
+
+/* 1. Общая настройка контейнера меню (ul) */
+.region-editor-region .menu {
+  display: flex;         /* Включаем Flexbox для горизонтального выравнивания */
+  flex-wrap: wrap;       /* Разрешаем перенос элементов на новую строку */
+  list-style: none;      /* Убираем маркеры списка */
+  margin: 0;
+  padding: 0;
+  background-color: #f1f3f5; /* Легкий фон для всей области меню */
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+/* 2. Стиль для каждого пункта меню верхнего уровня (li) - наши "карточки" */
+.region-editor-region .menu > li {
+  margin: 0.25rem;
+  position: relative; /* Необходимо для позиционирования выпадающего подменю */
+}
+
+/* 3. Стиль для ссылок внутри карточек */
+.region-editor-region .menu > li > a {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem; /* Уменьшаем шрифт, как вы и хотели */
+  font-weight: 500;
+  color: #212529;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  white-space: nowrap; /* Запрещаем перенос текста в ссылке */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Состояние при наведении */
+.region-editor-region .menu > li > a:hover {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+  color: #000;
+}
+
+/* 4. Стилизация выпадающего подменю (второй уровень) */
+.region-editor-region nav > ul ul {
+  /* ВОЗВРАЩАЕМ ЭТУ СТРОКУ, ЧТОБЫ МЕНЮ БЫЛО СКРЫТО ПО УМОЛЧАНИЮ */
+  display: none;
+  
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+
+  /* УДАЛЯЕМ ОТСЮДА display: grid;, ОН НУЖЕН ТОЛЬКО ПРИ НАВЕДЕНИИ */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  
+  min-width: 450px;
+  max-width: 90vw;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 0.75rem;
+  
+}
+
+/* Медиа-запрос для планшетов и небольших десктопов */
+@media (min-width: 768px) {
+  .region-editor-region nav > ul ul {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    min-width: 600px;
+  }
+}
+
+/* Медиа-запрос для широких экранов */
+@media (min-width: 1200px) {
+  .region-editor-region nav > ul ul {
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    min-width: 800px;
+  }
+}
+
+/* Показываем подменю при наведении на родительский li */
+.region-editor-region nav > ul > li:hover > ul {
+  /* Меняем display: block на display: grid, чтобы активировать сетку */
+  display: grid;
+}
+
+/* Убираем маркеры у вложенных li, если они есть */
+.region-editor-region nav > ul ul li {
+  list-style: none;
+}
+
+/* Ссылки второго уровня */
+.region-editor-region nav > ul ul li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #212529;
+  text-decoration: none;
+  background-color: #f8f9fa; /* Небольшой фон для каждого пункта */
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  height: 100%; /* Растягиваем ссылку на всю высоту ячейки */
+  
+  /* РАЗРЕШАЕМ ПЕРЕНОС СЛОВ */
+  white-space: normal;
+}
+
+.region-editor-region nav > ul ul li a:hover {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+}
+
+/* Показываем подменю при наведении на родительский li */
+.region-editor-region nav > ul > li:hover > ul {
+  /* Вот здесь display: grid; должен быть, чтобы меню появилось как сетка */
+  display: grid; 
+}
+
+
+
+
+
+/*
+ * Стили для сетки новостей на странице /news
+ */
+
+/* 1. Контейнер для всей сетки */
+.news-grid-view .view-content {
+  display: grid;
+  /* Адаптивные колонки: браузер сам решит, сколько их сделать,
+     но каждая будет не меньше 300px */
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem; /* Расстояние между карточками */
+}
+
+/* 2. Стили для одной карточки */
+.news-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden; /* Скрываем всё, что выходит за скруглённые углы */
+  transition: box-shadow 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.news-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* 3. Изображение в карточке */
+.news-card__image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover; /* Масштабирует изображение, чтобы оно заполнило блок */
+  display: block;
+}
+
+/* 4. Контентная часть карточки */
+.news-card__content {
+  padding: 1rem;
+  flex-grow: 1; /* Это свойство уже должно быть, оно заставляет этот блок расти */
+  display: flex;
+  flex-direction: column; /* Делает этот блок flex-контейнером */
+}
+
+/* 5. Дата публикации */
+.news-card__date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+/* 6. Заголовок новости - СЮДА ДОБАВЛЯЕМ ИЗМЕНЕНИЕ */
+.news-card__title {
+  font-size: 1.25rem;
+  margin: 0;
+  flex-grow: 1; /* <-- ДОБАВЬТЕ ЭТУ СТРОКУ */
+}
+.news-card__title a {
+  text-decoration: none;
+  color: #212529;
+}
+.news-card__title a:hover {
+  /* text-decoration: underline; */
+}
+
+/* 7. Теги (новое правило, если его не было) */
+.news-card__tags {
+  margin-top: 1rem; /* Добавим небольшой отступ сверху для тегов */
+}
+
+
+
+
+/*
+ * Кастомная стилизация пагинации в стиле "отдельных кнопок"
+ */
+
+/* Добавляем верхний отступ для всей пагинации */
+.pager-nav {
+  margin-top: 3rem; /* Можете изменить значение по своему вкусу, например, 2rem или 40px */
+}
+
+/* 1. Общие стили для контейнера ul.pagination */
+.pagination {
+  gap: 0.5rem; /* Добавляем расстояние между кнопками */
+}
+
+/* 2. Стили для элемента li.page-item */
+.pagination .page-item {
+  /* Задаём фиксированный размер для каждой кнопки */
+  width: 42px;
+  height: 42px;
+}
+
+/* 3. Переопределяем стили для самой ссылки a.page-link */
+.pagination .page-item .page-link {
+  /* Убираем стандартные стили Bootstrap */
+  margin-left: 0; 
+  padding: 0;
+  box-shadow: none;
+
+  /* Делаем ссылку гибким контейнером, чтобы идеально центрировать контент */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Задаём размер и скругление */
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+
+  /* Цвета и рамка в обычном состоянии */
+  background-color: #f4f5f6;
+  border: 2px solid #f4f5f6;
+  color: #333;
+  font-weight: 500;
+
+  /* Плавный переход для эффектов */
+  transition: all 0.2s ease-in-out;
+}
+
+/* 4. Эффект при наведении */
+.pagination .page-item:not(.active) .page-link:hover {
+  border-color: #0061d9;
+  background-color: #fff;
+  color: #0061d9;
+}
+
+/* 5. Стиль для активного элемента */
+.pagination .page-item.active .page-link {
+  background-color: #0061d9;
+  border-color: #0061d9;
+  color: #fff;
+  pointer-events: none; /* Делаем активную страницу некликабельной */
+}

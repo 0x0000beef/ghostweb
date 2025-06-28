@@ -1,0 +1,44 @@
+{#
+/**
+ * @file
+ * Кастомный шаблон для полей в представлении all_news.
+ * Создаёт HTML-разметку для одной карточки новости в сетке.
+ */
+#}
+<article class="news-card">
+  {# 1. Изображение #}
+  {# Проверяем, существует ли поле, чтобы не выводить пустой div #}
+  {% if fields.field_image.content %}
+    <div class="news-card__image">
+      {# Выводим уже готовую картинку со ссылкой, которую сгенерировал Views #}
+      {{ fields.field_image.content }}
+    </div>
+  {% endif %}
+
+  {# 2. Контентная часть карточки #}
+  <div class="news-card__content">
+    {# Блок с мета-информацией: дата и теги #}
+    <div class="news-card__meta">
+      {% if fields.created.content %}
+        <div class="news-card__date">
+          {{ fields.created.content }}
+        </div>
+      {% endif %}
+    </div>
+
+    {# 3. Заголовок новости #}
+    {% if fields.title.content %}
+      <h3 class="news-card__title">
+        {# Выводим уже готовый заголовок со ссылкой #}
+        {{ fields.title.content }}
+      </h3>
+    {% endif %}
+
+    {# 4. Теги (если они есть) #}
+    {% if fields.field_tags.content %}
+      <div class="news-card__tags">
+        {{ fields.field_tags.content }}
+      </div>
+    {% endif %}
+  </div>
+</article>
