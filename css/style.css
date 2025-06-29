@@ -413,7 +413,86 @@ caption {
   color: #0056b3; /* Цвет ссылки при наведении (синий Bootstrap). Замените на цвет ссылок при наведении вашей темы. */
   text-decoration: underline; /* Возвращаем подчеркивание при наведении */
 }
+/*
+ * Добавляем иконку-стрелку к заголовку блока "Все новости"
+ */
 
+/* 1. Нацеливаемся на ссылку внутри заголовка блока */
+/* (Предполагаем, что заголовок это h2. Если нет, замените h2 на нужный тег) */
+.frontpage-news-headers-right h2 a {
+  /* Превращаем ссылку во flex-контейнер для лёгкого выравнивания */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* Расстояние между текстом и стрелкой */
+  text-decoration: none; /* Можно убрать подчеркивание, т.к. есть иконка */
+}
+
+/* 2. Создаём псевдоэлемент ::after, который и будет нашей иконкой */
+.frontpage-news-headers-right h2 a::after {
+  content: ''; /* Обязательное свойство для ::after */
+  display: block;
+
+  /* Задаём размеры иконки */
+  width: 1em;   /* 1em = размеру текущего шрифта */
+  height: 1em;
+
+  /* Устанавливаем нашу иконку как фон */
+  background-image: url('../images/arrow-right.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* Плавный переход для эффектов */
+  transition: transform 0.2s ease-out;
+}
+/* Сдвигаем стрелку вправо при наведении */
+.frontpage-news-headers-right h2 a:hover::after {
+  transform: translateX(4px);
+}
+
+
+/* баннеры внизу */
+/* Применяем Flexbox к дочернему div, а не к самому блоку */
+.horizontal-banners > div {
+  display: flex;
+  overflow-x: auto; /* Горизонтальная прокрутка */
+  padding-bottom: 15px; /* Отступ для скроллбара */
+}
+
+/* Стили для параграфов внутри этой обертки */
+.horizontal-banners > div > p {
+  margin: 0 10px 0 0; /* Отступ справа между баннерами */
+  flex-shrink: 0; /* Запрещаем элементам сжиматься */
+}
+
+.horizontal-banners > div > p:last-child {
+  margin-right: 0;
+}
+
+/* Стили для полосы прокрутки (опционально) */
+.horizontal-banners > div::-webkit-scrollbar {
+  height: 8px;
+}
+
+.horizontal-banners > div::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.horizontal-banners > div::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.horizontal-banners > div::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Добавьте это к вашему CSS */
+.horizontal-banners img {
+  width: 350px; /* или любая другая фиксированная ширина */
+  height: auto; /* чтобы сохранялись пропорции */
+  display: block;
+}
 
 
 /* вкладки редактирования материала */
@@ -465,3 +544,9 @@ caption {
   /* Нижняя рамка уже убрана, и за счет смещения `bottom: -1px` и белого фона
      создается эффект "открытой" вкладки. */
 }
+
+
+
+
+
+
