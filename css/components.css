@@ -674,3 +674,88 @@ article.node--view-mode-full figure.figure-with-caption figcaption {
 .sidebar-news-item__title a:hover {
   text-decoration: underline;
 }
+
+
+
+
+
+
+/*
+ * Стили для страницы результатов поиска (/search/node)
+ */
+
+/* --- 1. Форма поиска вверху страницы --- */
+
+/* Делаем форму однострочной */
+form.search-form .container-inline {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+form.search-form .form-search {
+  flex-grow: 1; /* Поле ввода занимает всё доступное место */
+}
+
+
+/* --- 2. Список результатов --- */
+
+/* Убираем маркеры (цифры) и отступы у основного списка <ol> */
+.region-content ol {
+  list-style: none;
+  padding: 0;
+}
+
+/* Каждый элемент <li> становится карточкой */
+.region-content ol li {
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+/* Эффект при наведении на карточку */
+.region-content ol li:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+
+/* --- 3. Содержимое карточки результата --- */
+
+/* Заголовок результата */
+.region-content ol li h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.region-content ol li h3 a {
+  text-decoration: none;
+}
+
+/* Текстовый сниппет */
+.region-content ol li p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Выделяем найденное слово как маркером */
+.region-content ol li strong {
+  background-color: #fff3cd; /* Светло-желтый */
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* Мета-информация (автор и дата) */
+.region-content ol li p:last-child {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  border-top: 1px solid #f1f1f1;
+  padding-top: 1rem;
+}

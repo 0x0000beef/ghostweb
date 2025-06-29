@@ -5,12 +5,13 @@
  * Functions to support the Ghostweb theme.
  */
 
+
+
 /**
  * Implements hook_theme_suggestions_block_alter().
  */
 function ghostweb_theme_suggestions_block_alter(array &$suggestions, array $variables) {
   // --- Логика для сворачиваемых меню (проверяем ID МЕНЮ) ---
-  // Эта часть у вас уже была и работала для аккордеонов.
   if (isset($variables['elements']['#derivative_plugin_id'])) {
     $derivative_id = $variables['elements']['#derivative_plugin_id'];
     
@@ -19,7 +20,7 @@ function ghostweb_theme_suggestions_block_alter(array &$suggestions, array $vari
     }
   }
 
-  // --- НОВАЯ ИСПРАВЛЕННАЯ ЛОГИКА для плиточных меню (проверяем ID БЛОКА) ---
+  // --- ЛОГИКА для плиточных меню (проверяем ID БЛОКА) ---
   if (isset($variables['elements']['#id'])) {
     $block_id = $variables['elements']['#id'];
 
