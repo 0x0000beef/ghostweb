@@ -1,0 +1,13 @@
+{#
+ * @file
+ * Кастомный шаблон для поля field_image в новостях.
+ * Оборачивает изображение и его ALT-текст в теги figure и figcaption.
+ #}
+{% for item in items %}
+  <figure class="figure-with-caption">
+    {{ item.content }}
+    {% if item.content['#item'].alt %}
+      <figcaption>{{ item.content['#item'].alt }}</figcaption>
+    {% endif %}
+  </figure>
+{% endfor %}

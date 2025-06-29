@@ -1,0 +1,30 @@
+{#
+ * @file
+ * Шаблон ИСКЛЮЧИТЕЛЬНО для сворачиваемых блоков-меню.
+ #}
+{%
+  set classes = [
+    'block',
+    'block-menu',
+    'navigation',
+    'card',
+    'my-3',
+    'my-lg-4'
+  ]
+%}
+{% set unique_id = 'collapse-' ~ plugin_id|clean_id %}
+{% set is_open = 'is-collapsed-by-default' not in attributes.class %}
+
+<div{{ attributes.addClass(classes) }}>
+  <div class="card-body">
+    <div class="btn-collapse" data-bs-toggle="collapse" data-bs-target="#{{ unique_id }}" aria-expanded="{{ is_open ? 'true' : 'false' }}">
+      <h3{{ title_attributes.addClass('m-0') }}>{{ label }}</h3>
+    </div>
+
+    <div id="{{ unique_id }}" class="collapse{{ is_open ? ' show' : '' }}">
+      <div class="pt-3">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>

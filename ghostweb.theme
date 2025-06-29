@@ -1,2 +1,23 @@
 <?php
 
+/**
+ * @file
+ * Functions to support the Ghostweb theme.
+ */
+
+/**
+ * Implements hook_theme_suggestions_block_alter().
+ */
+function ghostweb_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  // Проверяем, существует ли у блока ID производного плагина.
+  if (isset($variables['elements']['#derivative_plugin_id'])) {
+    $derivative_id = $variables['elements']['#derivative_plugin_id'];
+    
+    // Проверяем, начинается ли этот ID с 'banner-menu-'.
+    // strpos() === 0 — это надежный способ проверить начало строки.
+    if (strpos($derivative_id, 'banner-menu-') === 0) {
+      // Если да, то добавляем нашу подсказку для шаблона.
+      $suggestions[] = 'block__collapsible_menu';
+    }
+  }
+}
