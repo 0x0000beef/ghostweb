@@ -139,7 +139,69 @@
 
 
 
+/*
+ * Стили для плиточного меню
+ */
 
+.tile-menu-block__title {
+  /* Стили для заголовка блока, если он нужен */
+  margin-bottom: 1.5rem;
+  /* text-align: center; */
+}
+
+/* Сбрасываем стили списка по умолчанию */
+.tile-menu-block .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+  
+  /* МОБИЛЬНЫЕ (по умолчанию): 1 колонка */
+  grid-template-columns: 1fr;
+}
+
+/* ПЛАНШЕТЫ (экраны шире 576px): 2 колонки */
+@media (min-width: 576px) {
+  .tile-menu-block .menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ДЕСКТОПЫ (экраны шире 992px): 3 колонки */
+@media (min-width: 992px) {
+  .tile-menu-block .menu {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Стили для самой плитки (ссылки) */
+.tile-menu-block .menu a {
+  display: block;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  text-decoration: none;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.tile-menu-block .menu a:hover {
+  border-color: #007bff;
+  background-color: #f8f9fa;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ДЕСКТОПНЫЕ СТИЛИ: 3 колонки на экранах шире 768px */
+@media (min-width: 768px) {
+  .tile-menu-block .menu {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 
 

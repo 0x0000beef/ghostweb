@@ -1,0 +1,12 @@
+{#
+ * @file
+ * Шаблон для блоков "плиточного меню".
+ #}
+<div{{ attributes.addClass('tile-menu-block') }}>
+  {% if label %}
+    <h3 class="tile-menu-block__title">{{ label }}</h3>
+  {% endif %}
+  <div class="tile-menu-block__content">
+    {{ content }}
+  </div>
+</div>

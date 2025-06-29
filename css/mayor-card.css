@@ -35,6 +35,15 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* НОВОЕ: Убираем подчеркивание у ссылки с фотографией */
+.mayor-card__photo a,
+.mayor-card__photo a:hover {
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+
 /* 4. Центральная колонка с информацией */
 .mayor-card__info h3 {
   margin-top: 0;
@@ -78,6 +87,12 @@
 }
 .social-links__icon:hover svg {
   transform: scale(1.1);
+}
+
+/* НОВОЕ: Убираем подчеркивание у ссылок с иконками соцсетей */
+.social-links a.social-links__icon,
+.social-links a.social-links__icon:hover {
+    text-decoration: none;
 }
 
 /* 6. Приветственный текст */
