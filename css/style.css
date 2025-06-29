@@ -572,3 +572,58 @@ caption {
 }
 
 
+
+/* РЕЗУЛЬТАТЫ ПОИСКОВОЙ ВЫДАЧИ */
+
+/* Делаем отступы между результатами поиска */
+.view-custom-search-results-view .view-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Отступ между карточками */
+}
+
+/* Стилизуем каждую "карточку" результата */
+.view-custom-search-results-view .views-row {
+  background-color: #f9f9f9; /* Светлый фон */
+  padding: 1rem; /* Внутренние отступы */
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Скругляем углы */
+  transition: box-shadow 0.3s ease;
+}
+
+/* Добавляем тень при наведении для интерактивности */
+.view-custom-search-results-view .views-row:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль для заголовка-ссылки */
+.view-custom-search-results-view .views-field-title a {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #0d6efd;
+  text-decoration: none;
+}
+.view-custom-search-results-view .views-field-title a:hover {
+  text-decoration: underline;
+}
+
+
+/* Стиль для даты публикации */
+.view-custom-search-results-view .views-field-created {
+  font-size: 0.875rem;
+  color: #6c757d; /* Серый цвет */
+  margin: 0.25rem 0 0.5rem; /* Небольшие отступы */
+}
+
+/* Стиль для сниппета с результатом */
+.view-custom-search-results-view .views-field-search-api-excerpt {
+  line-height: 1.6;
+}
+
+/* Выделяем найденное слово */
+.view-custom-search-results-view .views-field-search-api-excerpt strong {
+  background-color: #ffecb3; /* Желтоватая подсветка */
+  color: #333;
+  padding: 0 2px;
+  border-radius: 3px;
+}
