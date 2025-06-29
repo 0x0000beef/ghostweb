@@ -1,0 +1,114 @@
+/*
+ * Стили для карточки руководителя (мэра)
+ */
+
+/* 1. Основной контейнер */
+.mayor-card {
+  display: flex;
+  gap: 2rem; /* Расстояние между колонками */
+  background-color: #e7f5ff; /* Светло-небесный фон */
+  padding: 2rem;
+  border-radius: 12px;
+  align-items: flex-start; /* Выравниваем колонки по верху */
+}
+
+/* 2. Колонки */
+.mayor-card__photo {
+  flex: 0 0 200px; /* Фиксированная ширина для фото */
+}
+.mayor-card__info {
+  flex: 1 1 40%; /* Занимает 40% доступного пространства */
+}
+.mayor-card__welcome {
+  flex: 1 1 60%; /* Занимает 60% доступного пространства */
+  border-left: 2px solid rgba(255, 255, 255, 0.7); /* Разделительная линия */
+  padding-left: 2rem;
+}
+
+/* 3. Фотография */
+.mayor-card__photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%; /* Делаем фото круглым */
+  border: 5px solid #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 4. Центральная колонка с информацией */
+.mayor-card__info h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+.mayor-card__info h3 a {
+  color: #212529;
+  text-decoration: none;
+}
+.mayor-card__info p.position {
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 1.5rem;
+}
+.mayor-card__info .contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.9rem;
+}
+.mayor-card__info .contact-info li {
+  padding-left: 160px;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+.mayor-card__info .contact-info li strong {
+  position: absolute;
+  left: 0;
+  font-weight: normal;
+  color: #6c757d;
+}
+
+/* 5. Иконки соцсетей */
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+.social-links__icon svg {
+  display: block;
+  transition: transform 0.2s ease;
+}
+.social-links__icon:hover svg {
+  transform: scale(1.1);
+}
+
+/* 6. Приветственный текст */
+.mayor-card__welcome {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.mayor-card__welcome p:first-child {
+  margin-top: 0;
+}
+.mayor-card__welcome em {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+/* 7. Адаптивность */
+@media (max-width: 992px) {
+  .mayor-card {
+    flex-direction: column; /* Ставим колонки друг под другом */
+    align-items: center; /* Центрируем фото */
+  }
+  .mayor-card__photo {
+    flex-basis: auto;
+    width: 150px; /* Уменьшаем фото на мобильных */
+  }
+  .mayor-card__welcome {
+    border-left: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.7);
+    padding-left: 0;
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+}

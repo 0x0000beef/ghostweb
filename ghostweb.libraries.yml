@@ -23,7 +23,9 @@ global-styling:
       css/breadcrumbs.css: { weight: -5.5 } # До mainmenu
       css/slider.css: { weight: -5.4 }      # До mainmenu
       css/mainmenu.css: { weight: -5 }
+      css/forms.css: { weight: -5 }
       css/mobile.css: { weight: -4, media: screen and (max-width: 767.98px) } # Мобильные стили (Bootstrap уже адаптивен, это для доп. правок)
+      css/mayor-card.css: {}
 
   dependencies:
     - core/normalize # Хорошая практика для сброса стилей браузера

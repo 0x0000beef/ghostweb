@@ -10,6 +10,7 @@ libraries:
   - ghostweb/bootstrap-js
   - ghostweb/global-scripts
   - ghostweb/fonts # Подключение шрифтов
+  - ghostweb/mayor-card # глава
 
 regions:
   service_top: 'Service Top (for scripts)'

@@ -1,0 +1,107 @@
+/*
+ * Комплексные стили для улучшения формы редактирования материалов
+ */
+
+/* --- 1. Основные поля ввода и их обертки --- */
+
+/* Стили для обертки каждого поля (делаем их "карточками") */
+.node-form .form-wrapper {
+  background-color: #fdfdfd;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Убираем лишние отступы у вложенных form-wrapper'ов (например, в виджете изображения) */
+.node-form .form-wrapper .form-wrapper {
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+  background: none;
+  box-shadow: none;
+}
+
+/* Метки (labels) */
+.node-form label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #495057;
+  margin-bottom: 0.5rem;
+  display: inline-block; /* Меняем на inline-block */
+}
+
+/* Все поля ввода */
+.node-form input[type="text"],
+.node-form input[type="date"],
+.node-form input[type="time"],
+.node-form textarea,
+.node-form select {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.node-form input[type="text"]:focus,
+.node-form textarea:focus,
+.node-form select:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+/* --- 2. Виджет загрузки файлов --- */
+
+.node-form .form-managed-file {
+  border: 2px dashed #dee2e6;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.node-form input[type="file"] {
+  margin: 0 auto;
+}
+
+
+/* --- 3. Чекбоксы и их метки --- */
+
+.node-form .form-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+/* Отменяем глобальный display:block для меток у чекбоксов */
+.node-form .form-type-checkbox label {
+  display: inline;
+  margin-bottom: 0;
+  font-weight: normal; /* Делаем шрифт обычным */
+}
+
+
+/* --- 4. Кнопки действий --- */
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  background-color: transparent;
+  border: none;
+  padding: 1rem 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.form-actions .button {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+}
