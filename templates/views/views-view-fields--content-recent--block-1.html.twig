@@ -1,0 +1,23 @@
+{#
+ * @file
+ * Шаблон для списка новостей в сайдбаре с картинкой.
+ #}
+{% set classes = ['sidebar-news-item', 'd-flex', 'align-items-start'] %}
+
+<div{{ attributes.addClass(classes) }}>
+  {% if fields.field_image.content %}
+    <div class="sidebar-news-item__image me-3">
+      {{ fields.field_image.content }}
+    </div>
+  {% endif %}
+
+  <div class="sidebar-news-item__text">
+    {% if fields.title.content %}
+      <div class="sidebar-news-item__title">{{ fields.title.content }}</div>
+    {% endif %}
+
+    {% if fields.created.content %}
+      <div class="sidebar-news-item__date text-muted small mt-1">{{ fields.created.content }}</div>
+    {% endif %}
+  </div>
+</div>

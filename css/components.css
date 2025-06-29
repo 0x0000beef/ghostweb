@@ -488,7 +488,7 @@
 
 /* 1. Уменьшаем заголовок страницы h1 */
 .node--view-mode-full .region-content h1 {
-  font-size: 1.25rem !important;
+  font-size: 1.25rem;
   margin-bottom: 1rem;
 }
 
@@ -536,4 +536,50 @@
   font-size: 0.875rem;
   font-style: italic;
   text-align: center;
+}
+
+
+
+
+
+
+/*
+ * Стили для списка новостей в сайдбаре
+ */
+
+/* Общий контейнер, добавляем разделитель между новостями */
+.sidebar-news-list .views-row {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sidebar-news-list .views-row:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Изображение */
+.sidebar-news-item__image {
+  flex-shrink: 0; /* Запрещаем изображению сжиматься */
+  width: 100px; /* Фиксированная ширина */
+}
+
+.sidebar-news-item__image img {
+  border-radius: 8px; /* Скругляем углы */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Заголовок */
+.sidebar-news-item__title a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #212529;
+}
+
+.sidebar-news-item__title a:hover {
+  text-decoration: underline;
 }
