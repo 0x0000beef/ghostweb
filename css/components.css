@@ -600,7 +600,7 @@ article.node--view-mode-full .figure-with-caption figcaption {
 
 /* 1. Уменьшаем заголовок страницы h1, используя ID блока для максимального приоритета */
 #block-ghostweb-page-title h1 {
-  font-size: 1.875rem; /* Я немного увеличил значение с прошлого раза */
+  /* font-size: 1.875rem; /* Я немного увеличил значение с прошлого раза */
   margin-bottom: 1rem;
 }
 
@@ -680,8 +680,15 @@ article.node--view-mode-full figure.figure-with-caption figcaption {
 
 
 
+
+
+
+
+
+
+
 /*
- * Стили для страницы результатов поиска (/search/node)
+ * Стили для страницы результатов поиска (/search/result)
  */
 
 /* --- 1. Форма поиска вверху страницы --- */
