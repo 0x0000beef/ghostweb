@@ -6,7 +6,7 @@
 .mayor-card {
   display: flex;
   gap: 2rem; /* Расстояние между колонками */
-  background-color: #e7f5ff; /* Светло-небесный фон */
+  background-color: #eaf0f5; /* Светло-небесный фон */
   padding: 2rem;
   border-radius: 12px;
   align-items: flex-start; /* Выравниваем колонки по верху */
@@ -55,7 +55,7 @@
 }
 .mayor-card__info p.position {
   font-weight: 600;
-  color: #007bff;
+  color: #273350;
   margin-bottom: 1.5rem;
 }
 .mayor-card__info .contact-info {

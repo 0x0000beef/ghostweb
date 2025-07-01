@@ -28,6 +28,29 @@
   --original-medium-light-green-bg-hover: #a3d6a3;
 }
 
+
+/* --- Адаптивный размер шрифта для меню Superfish --- */
+
+/* 1. Базовый (мобильный) размер шрифта */
+#block-ghostweb-mainmenu-superfish {
+  font-size: 0.87rem; /* Можете подобрать удобный размер для телефонов */
+}
+
+/* --- Адаптивный размер шрифта для меню Superfish --- */
+
+/* 1. Базовый (мобильный) размер шрифта */
+#block-ghostweb-mainmenu-superfish {
+  font-size: 0.9rem; /* Можете подобрать удобный размер для телефонов */
+}
+
+/* 2. Увеличенный размер для экранов шире 768px (планшеты и десктопы) */
+@media (max-width: 768px) {
+  #block-ghostweb-mainmenu-superfish {
+    font-size: 1rem; /* Стандартный или чуть увеличенный размер для больших экранов */
+  }
+}
+
+
 /* Применяем Flexbox к контейнеру, который содержит меню */
 #block-ghostweb-mainmenu-superfish {
   display: flex;
@@ -170,12 +193,28 @@
   margin-top: 0; /* ИЗМЕНЕНО: Убираем вертикальный отступ */
 }
 
+
+
+/* Убираем индикаторы (стрелки) только у пунктов первого уровня */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > a > .sf-sub-indicator,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > span.nolink > .sf-sub-indicator {
+  display: none;
+}
+/* 2. Убираем лишний отступ справа, который был для стрелок */
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > a.sf-with-ul,
+#block-ghostweb-mainmenu-superfish .sf-style-none > li > span.nolink.sf-with-ul {
+  padding-right: 1em; /* Возвращаем стандартный отступ, как у обычных пунктов */
+}
+
+
+
+
 /* --- ОСТАЛЬНЫЕ СТИЛИ ИЗ ОРИГИНАЛА (цвета можно адаптировать при необходимости) --- */
 
 #block-ghostweb-mainmenu-superfish .sf-style-none span.sf-description {
   color: var(--original-forest-green-text); /* лесной зеленый (можно изменить) */
   display: block;
-  font-size: 0.833em;
+  /* font-size: 0.833em; */
   line-height: 1.5;
   margin: 5px 0 0 5px;
   padding: 0;

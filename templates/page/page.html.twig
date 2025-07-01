@@ -50,6 +50,13 @@
   {% set main_container_class = (is_front and not logged_in) ? 'container-fluid' : 'container' %}
 
   <div class="{{ main_container_class }}">
+      {# НОВЫЙ РЕГИОН ДЛЯ РЕДАКТОРОВ #}
+    {% if page.editor_region %}
+      <div class="region region-editor-region mb-4"> {# mb-4 для отступа снизу #}
+        {{ page.editor_region }}
+      </div>
+    {% endif %}
+	
     {# Highlighted region #}
     {% if page.highlighted %}
       <div class="region region-highlighted">

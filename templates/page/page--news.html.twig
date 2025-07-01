@@ -50,6 +50,15 @@
 {# Main Content Area #}
 <main class="main-content-wrapper" role="main">
   <div class="container">
+  
+  {# НОВЫЙ РЕГИОН ДЛЯ РЕДАКТОРОВ #}
+    {% if page.editor_region %}
+      <div class="region region-editor-region mb-4"> {# mb-4 для отступа снизу #}
+        {{ page.editor_region }}
+      </div>
+    {% endif %}
+  
+  
     {# Highlighted region #}
     {% if page.highlighted %}
       <div class="region region-highlighted">
