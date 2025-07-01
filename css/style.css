@@ -658,3 +658,26 @@ caption {
 /* ------------------------------------------------- */
 
 
+
+/*   ИКОНКА ОЧКОВ       */
+.accessibility-icon {
+  /* Убираем стандартные стили кнопки */
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+
+  /* Задаем размер иконки */
+  width: 48px; 
+  height: 48px;
+  
+  /* Цвет иконки (благодаря fill="currentColor" в SVG) */
+  color: #000000; /* Можете поставить любой нужный цвет */
+  transition: color 0.2s ease-in-out;
+}
+
+.accessibility-icon:hover {
+  color: #0056b3; /* Пример цвета при наведении */
+}
+
+/* ----------------------------------- */

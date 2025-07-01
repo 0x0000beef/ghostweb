@@ -706,5 +706,64 @@ article.node--view-mode-full figure.figure-with-caption figcaption {
 
 
 
+/*
+ * Финальные стили для формы поиска в шапке
+ */
 
+/* 1. Обёртка формы. Используем её для позиционирования. */
+.header-search-form form {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+}
+
+/* 2. Поле для ввода текста. */
+.header-search-form .form-text {
+  width: 100%;
+  height: 42px; /* Задаём фиксированную высоту */
+  padding: 0.5rem 50px 0.5rem 1.25rem; /* Отступ справа для иконки */
+  
+  /* ИСПРАВЛЕНО: Новая тонкая рамка */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 21px; /* (Высота / 2) */
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* Подсветка рамки при фокусе */
+.header-search-form .form-text:focus {
+  /* border-color: #007bff; */
+}
+
+
+/* 3. Кнопка "Искать" */
+.header-search-form .button {
+  /* ИСПРАВЛЕНО: Надёжный способ центрирования по вертикали */
+  position: absolute;
+  top: 50%;
+  right: 5px; /* Небольшой отступ от правого края */
+  transform: translateY(-50%);
+
+  width: 34px; /* Делаем кнопку квадратной, равной высоте поля - (2*border) */
+  height: 34px;
+
+  /* Делаем кнопку невидимой */
+  background-color: transparent;
+  border: none;
+
+  /* ИСПРАВЛЕНО: Гарантированно прячем текст */
+  font-size: 10;
+  line-height: 0;
+  color: transparent;
+  
+  /* Стили для иконки */
+  background-image: url('../images/search-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  border-radius: 50%; /* Скругляем саму кнопку */
+}
 
