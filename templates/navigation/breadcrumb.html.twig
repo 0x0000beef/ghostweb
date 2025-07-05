@@ -1,0 +1,28 @@
+{#
+ * @file
+ * Кастомный шаблон для "хлебных крошек" с иконкой и ПРАВИЛЬНОЙ обрезкой и многоточием.
+ #}
+{% if breadcrumb %}
+  <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+    <ol class="breadcrumb__list">
+      {% for item in breadcrumb %}
+        <li class="breadcrumb__item">
+          {% if item.url %}
+            <a href="{{ item.url }}" class="breadcrumb__link">
+              {% if loop.first %}
+                <span class="breadcrumb__home-icon" aria-label="{{ 'Home'|t }}"></span>
+              {% else %}
+                {# ИСПРАВЛЕНО: Добавлен третий параметр '...' #}
+                {{ item.text|render|striptags|truncate(55, false, '...') }}
+              {% endif %}
+            </a>
+          {% else %}
+            {# ИСПРАВЛЕНО: для текущей страницы тоже #}
+            {{ item.text|render|striptags|truncate(55, false, '...') }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

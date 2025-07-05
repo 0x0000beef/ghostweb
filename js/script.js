@@ -92,39 +92,25 @@
     }
   };
 
-  /**
-   * Поведение для анимированной формы поиска.
-   */
-  Drupal.behaviors.ghostwebSearchToggle = {
-    attach: function (context, settings) {
-      once('search-toggle', '.header-search-form', context).forEach(function (searchBlock) {
-        const searchButton = searchBlock.querySelector('.button');
-        const searchInput = searchBlock.querySelector('.form-text');
 
-        if (!searchButton || !searchInput) {
-          return;
-        }
-
-        searchButton.addEventListener('click', function (event) {
-          if (searchBlock.classList.contains('is-expanded')) {
-            if (searchInput.value.trim() === '') {
-              event.preventDefault();
-              searchBlock.classList.remove('is-expanded');
-            }
-          } else {
-            event.preventDefault();
-            searchBlock.classList.add('is-expanded');
-            searchInput.focus();
-          }
-        });
-
-        document.addEventListener('click', function(event) {
-          if (!searchBlock.contains(event.target)) {
-            searchBlock.classList.remove('is-expanded');
-          }
-        });
+/**
+ * Поведение для раскрываемого блока "Версия для слабовидящих".
+ */
+Drupal.behaviors.ghostwebAccessibilityToggle = {
+  attach: function (context, settings) {
+    // Ищем блок по его существующему классу
+    once('accessibility-toggle', '.blind-version-block', context).forEach(function (block) {
+      // Добавляем класс "is-expanded" при наведении мыши
+      block.addEventListener('mouseenter', function () {
+        block.classList.add('is-expanded');
       });
-    }
-  };
 
-})(Drupal, once);
+      // Убираем класс "is-expanded", когда мышь уходит
+      block.addEventListener('mouseleave', function () {
+        block.classList.remove('is-expanded');
+      });
+    });
+  }
+};
+
+})(Drupal, once); // Убедитесь, что эта строка в вашем файле только одна, в самом конце

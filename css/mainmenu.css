@@ -18,14 +18,14 @@
 
 /* Определения цветов (можете вынести в переменные, если используете препроцессор или CSS переменные) */
 :root {
-  --dark-blue: #000080; /* Замените на ваш темно-синий */
-  --lighter-blue: #4169E1; /* Замените на ваш светло-синий */
+  --dark-blue: #1d232f; /* Замените на ваш темно-синий */
+  --lighter-blue: #266194; /* Замените на ваш светло-синий */
   --white-text: #FFFFFF;
   /* Цвета для описаний и индикаторов из старого CSS, можно тоже обновить при желании */
-  --original-dark-green-text: #008000;
-  --original-forest-green-text: #228B22;
-  --original-very-light-green-bg: #e6f9e6;
-  --original-medium-light-green-bg-hover: #a3d6a3;
+  --original-dark-green-text: #1d232f;
+  --original-forest-green-text: #6b7da0;
+  --original-very-light-green-bg: #1d232f;
+  --original-medium-light-green-bg-hover: #266194;
 }
 
 
@@ -269,7 +269,7 @@
 /* Стили для аккордеона - цвета остались оригинальные, можно обновить */
 #block-ghostweb-mainmenu-superfish div.sf-accordion-toggle.sf-style-none a {
   background: var(--original-very-light-green-bg);
-  color: var(--original-dark-green-text);
+  color: var(--white-text);
   padding: 1em;
 }
 #block-ghostweb-mainmenu-superfish div.sf-accordion-toggle.sf-style-none a.sf-expanded,

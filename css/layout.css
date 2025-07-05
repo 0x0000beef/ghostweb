@@ -28,16 +28,9 @@
   text-decoration: none;
 }
 
-.region-header-service-region {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.region-header-service-region .block { /* Блоки в этом регионе (поиск, соцсети) */
-  margin-left: 1rem;
-}
 
-/* Navigation Sticky Top */
+
+
 /* Обновленный стиль для блока с навигацией */
 .region-navigation-sticky-top {
   position: sticky; /* Используем !important, чтобы переопределить возможные стили из _position.scss */
@@ -200,3 +193,132 @@
 
 /* КОНЕЦ ЗАПАСА */
 
+
+
+
+
+
+/* --- ОБЩИЕ СТИЛИ ДЛЯ КОНТЕЙНЕРА БЛОКОВ --- */
+.region-header-service-region > div {
+  display: flex;
+  align-items: center; /* Вертикальное выравнивание по центру */
+  justify-content: space-between; /* Распределяем пространство между элементами */
+  gap: 20px; /* Пространство между блоками */
+}
+
+/* --- СТИЛИ ДЛЯ ФОРМЫ ПОИСКА --- */
+.views-exposed-form {
+  flex-grow: 1; /* Позволяем блоку с поиском занимать все доступное место */
+}
+
+.views-exposed-form form {
+  position: relative;
+  width: 100%;
+}
+
+.views-exposed-form input[type="text"] {
+  height: 45px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  padding-left: 20px;
+  padding-right: 50px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.views-exposed-form .form-actions {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.views-exposed-form input[type="submit"] {
+  background-color: transparent;
+  border: none;
+  font-size: 0;
+  text-indent: -9999px;
+  background-image: url('../images/search-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* --- СТИЛИ ДЛЯ БЛОКА "ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ" --- */
+
+/* 1. ИСПРАВЛЕНИЕ: Картинка и текст теперь в одну строку */
+.accessibility-container {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Запрещаем тексту переноситься */
+}
+
+/* Используем класс .blind-version-block */
+.blind-version-block {
+  flex-shrink: 0; /* Запрещаем блоку сжиматься */
+}
+
+/* Стили для иконки, чтобы она не была квадратной */
+#specialButton {
+  height: 24px; /* Задаем высоту */
+  width: auto;  /* Ширина подстроится автоматически, сохраняя пропорции */
+  margin-right: 8px; /* Небольшой отступ справа от текста */
+}
+
+/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */
+
+/* 2. ИСПРАВЛЕНИЕ: Блоки остаются в одну строку на мобильных */
+@media (max-width: 768px) {
+  .region-header-service-region > div {
+    gap: 10px; /* Уменьшаем отступ между блоками для экономии места */
+  }
+
+  /* Больше нет необходимости в flex-direction: column */
+}
+
+
+/* --- Анимация для блока "Версия для слабовидящих" --- */
+
+/* Контейнеру добавляем выравнивание и запрещаем перенос текста */
+.accessibility-container {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Скрываем текст по умолчанию. 
+  Используем max-width и opacity для плавной анимации.
+*/
+.accessibility-text {
+  display: inline-block; /* Необходимо для работы transition */
+  vertical-align: middle;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-width 0.4s ease-in-out, opacity 0.3s ease-in-out, margin-left 0.4s ease-in-out;
+  margin-right: 10px;
+}
+
+/* Убираем отступ у иконки, т.к. он будет у текста при появлении */
+#specialButton {
+  margin-right: 0;
+}
+
+/* Правило для раскрытого состояния теперь тоже использует класс */
+.blind-version-block.is-expanded .accessibility-text {
+  max-width: 250px; 
+  opacity: 1;
+  margin-left: 8px;
+}
+
+@media (max-width: 768px) {
+  .blind-version-block {
+    display: none;
+  }
+}

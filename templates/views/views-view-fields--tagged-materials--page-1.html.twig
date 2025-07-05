@@ -1,0 +1,44 @@
+{#
+ * @file
+ * Шаблон для вывода материалов на странице тега.
+ * templates/views/views-view-fields--tagged-materials--page-1.html.twig
+ #}
+<div class="tag-result-item">
+  {# --- ЛЕВАЯ КОЛОНКА: ИЗОБРАЖЕНИЕ --- #}
+  {% if fields.field_image.content %}
+    <div class="tag-result-item__image">
+      {{ fields.field_image.content }}
+    </div>
+  {% endif %}
+
+  {# --- ПРАВАЯ КОЛОНКА: ТЕКСТ --- #}
+  <div class="tag-result-item__content">
+    {% if fields.title.content %}
+      <h3 class="tag-result-item__title">{{ fields.title.content }}</h3>
+    {% endif %}
+
+    {% if fields.created.content %}
+      <div class="tag-result-item__date">{{ fields.created.content }}</div>
+    {% endif %}
+
+    {% if fields.body.content %}
+      <div class="tag-result-item__body">{{ fields.body.content }}</div>
+    {% endif %}
+
+    {# Проверяем, есть ли вообще теги в материале #}
+{% if not row._entity.field_tags.isEmpty() %}
+  {# Воссоздаём точную HTML-структуру, которую ожидает ваш CSS #}
+  <div class="tag-result-item__tags tags-section">
+    <div class="field__items">
+      {# Перебираем каждый тег в цикле #}
+      {% for tag_item in row._entity.field_tags %}
+        <div class="field__item">
+          {# Создаём ссылку для каждого тега вручную #}
+          <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': tag_item.target_id}) }}">{{ tag_item.entity.label }}</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+  </div>
+</div>

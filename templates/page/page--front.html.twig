@@ -62,15 +62,12 @@
       </div>
     {% endif %}
 
-    {% if breadcrumb %}
-      <nav class="breadcrumb" role="navigation" aria-label="Breadcrumbs">
-        <ul>
-          {% for link in breadcrumb %}
-            <li>{{ link }}</li>
-          {% endfor %}
-        </ul>
-      </nav>
-    {% endif %}
+    {# Этот код нужно использовать ВО ВСЕХ ТРЁХ файлах #}
+{% if page.breadcrumb %}
+  <div class="breadcrumb-region-wrapper">
+    {{ page.breadcrumb }}
+  </div>
+{% endif %}
 
     <div class="row">
       {# Основной контент теперь всегда на всю ширину #}
