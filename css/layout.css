@@ -148,7 +148,7 @@
 .region-main-content-bottom-2 > div {
   display: flex;
   gap: 20px;
-  flex-wrap: nowrap; /* или wrap, если нужно */
+  flex-wrap: wrap; /* или wrap, если нужно */
 }
 
 /* Ширина блоков по умолчанию */
@@ -194,8 +194,56 @@
 /* КОНЕЦ ЗАПАСА */
 
 
+/*
+ * Стиль для нового блока баннеров,
+ * который должен отображаться с новой строки.
+ */
+.tmb-middle-banners {
+  /* Заставляем блок занять 100% ширины flex-контейнера */
+  flex-basis: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 
+/*
+ * Стили для блока с двумя баннерами (.tmb-middle-banners)
+ */
 
+/* 1. Контейнер для баннеров. Используем Grid. */
+.tmb-middle-banners__content {
+  display: grid;
+  gap: 1.5rem; /* Расстояние между баннерами */
+  
+  /* МОБИЛЬНЫЕ СТИЛИ (по умолчанию): 1 колонка, баннеры друг под другом */
+  grid-template-columns: 1fr;
+}
+
+/* 2. Стили для самих баннеров (ссылок и картинок) */
+.tmb-middle-banners__content a {
+  display: block;
+  text-decoration: none;
+  /* Добавляем фон на случай, если у PNG прозрачные области */
+  /* background-color: #fff;  */
+  /* УБИРАЕМ эти два свойства */
+  /* border-radius: 12px; */
+  /* overflow: hidden; */
+}
+
+.tmb-middle-banners__content img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* ИЗМЕНЕНО: это свойство впишет изображение целиком, сохраняя пропорции */
+  object-fit: contain; 
+}
+
+/* 3. Адаптивность для десктопов */
+@media (min-width: 768px) {
+  /* На экранах шире 768px делаем 2 колонки */
+  .tmb-middle-banners__content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 
 /* --- ОБЩИЕ СТИЛИ ДЛЯ КОНТЕЙНЕРА БЛОКОВ --- */

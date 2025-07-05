@@ -35,4 +35,4 @@ regions:
   disabled_blocks: 'Disabled Blocks (Temporarily unused)'
 
 # Drupal будет искать favicon в корне сайта, но можно указать и здесь
-# favicon: images/favicon.png
+favicon: images/favicon.ico
