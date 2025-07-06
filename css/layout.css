@@ -118,6 +118,12 @@
 .site-footer-bottom-row ul li {
   margin-bottom: 0.5rem;
 }
+/*
+ * Добавляем нижний отступ для каждой колонки в футере
+ */
+.site-footer-bottom-row [class*="col-"] {
+  margin-bottom: 2.5rem;
+}
 
 
 /* Copyrights */
