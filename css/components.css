@@ -416,16 +416,16 @@
 
 
 /*
- * Стили для сетки новостей на странице /news
+ * Стили для сетки новостей
  */
 
 /* 1. Контейнер для всей сетки */
 .news-grid-view .view-content {
   display: grid;
-  /* Адаптивные колонки: браузер сам решит, сколько их сделать,
-     но каждая будет не меньше 300px */
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 1.5rem; /* Расстояние между карточками */
+  
+  /* ИЗМЕНЕНО: Мобильные стили (по умолчанию) - 1 колонка */
+  grid-template-columns: 1fr;
 }
 
 /* 2. Стили для одной карточки */
@@ -434,29 +434,24 @@
   flex-direction: column;
   border: 1px solid #e9ecef;
   border-radius: 8px;
-  overflow: hidden; /* Скрываем всё, что выходит за скруглённые углы */
-  /* transition: box-shadow 0.2s ease-in-out; */
+  overflow: hidden;
   background-color: #fff;
-}
-
-.news-card:hover {
-  /* box-shadow: 0 8px 24px rgba(0,0,0,0.1); */
 }
 
 /* 3. Изображение в карточке */
 .news-card__image img {
   width: 100%;
   height: 300px;
-  object-fit: cover; /* Масштабирует изображение, чтобы оно заполнило блок */
+  object-fit: cover;
   display: block;
 }
 
 /* 4. Контентная часть карточки */
 .news-card__content {
   padding: 1rem;
-  flex-grow: 1; /* Это свойство уже должно быть, оно заставляет этот блок расти */
+  flex-grow: 1;
   display: flex;
-  flex-direction: column; /* Делает этот блок flex-контейнером */
+  flex-direction: column;
 }
 
 /* 5. Дата публикации */
@@ -466,25 +461,34 @@
   margin-bottom: 0.5rem;
 }
 
-/* 6. Заголовок новости - СЮДА ДОБАВЛЯЕМ ИЗМЕНЕНИЕ */
+/* 6. Заголовок новости */
 .news-card__title {
   font-size: 1.25rem;
   margin: 0;
-  flex-grow: 1; /* <-- ДОБАВЬТЕ ЭТУ СТРОКУ */
+  flex-grow: 1; 
 }
 .news-card__title a {
   text-decoration: none;
   color: #212529;
 }
-.news-card__title a:hover {
-  /* text-decoration: underline; */
-}
 
-/* 7. Теги (новое правило, если его не было) */
+/* 7. Теги */
 .news-card__tags {
-  margin-top: 1rem; /* Добавим небольшой отступ сверху для тегов */
+  margin-top: 1rem;
 }
 
+/* ДОБАВЛЕНО: Адаптивность для планшетов и десктопов */
+@media (min-width: 576px) {
+  .news-grid-view .view-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .news-grid-view .view-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 
 
