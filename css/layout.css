@@ -144,6 +144,9 @@
   margin-bottom: 1.5rem; /* Отступы между этими регионами */
 }
 
+
+
+
 /* НАСТРОЙКА РЕГИОНА С ПОС БАННЕРАМИ, ХАК ДЛЯ ВЫСОТЫ ПОС ЕСТЬ В САМОМ БЛОКЕ */
 .region-main-content-bottom-2 > div {
   display: flex;
@@ -151,17 +154,18 @@
   flex-wrap: wrap; /* или wrap, если нужно */
 }
 
-/* Ширина блоков по умолчанию */
+/* Ширина блоков по умолчанию (исправлено с помощью calc) */
 .additional-widget-left {
-  flex: 0 0 60%;
+  flex: 0 0 60%; /* Оставляем 60% для первого */
 }
 
 .additional-widget-right {
-  flex: 0 0 38.5%;
+  /* Для второго блока мы из оставшихся 40% вычитаем наш отступ в 20px */
+  flex: 0 0 calc(40% - 20px);
 }
 
 /* При ширине меньше 1280px - вертикально и ширина 100% */
-@media (max-width: 1279px) {
+@media (max-width: 1366px) {
   .region-main-content-bottom-2 > div {
     flex-direction: column;
   }
@@ -179,7 +183,7 @@
 .additional-widget-2 { flex: 0 0 30%; }
 .additional-widget-3 { flex: 0 0 30%; }
 
-@media (max-width: 1279px) {
+@media (max-width: 1366px) {
   .region-main-content-bottom-2 > div {
     flex-direction: column;
   }
