@@ -8,12 +8,13 @@
 <article class="news-card">
   {# 1. Изображение #}
   {# Проверяем, существует ли поле, чтобы не выводить пустой div #}
+  <div class="news-card__image">
   {% if fields.field_image.content %}
-    <div class="news-card__image">
-      {# Выводим уже готовую картинку со ссылкой, которую сгенерировал Views #}
-      {{ fields.field_image.content }}
-    </div>
+    {{ fields.field_image.content }}
+  {% else %}
+    <img src="/{{ active_theme_path() }}/images/placeholder.jpg" alt="Изображение-плейсхолдер">
   {% endif %}
+</div>
 
   {# 2. Контентная часть карточки #}
   <div class="news-card__content">

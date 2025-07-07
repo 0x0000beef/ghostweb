@@ -5,11 +5,13 @@
 {% set classes = ['sidebar-news-item', 'd-flex', 'align-items-start'] %}
 
 <div{{ attributes.addClass(classes) }}>
+  <div class="sidebar-news-item__image me-3">
   {% if fields.field_image.content %}
-    <div class="sidebar-news-item__image me-3">
-      {{ fields.field_image.content }}
-    </div>
+    {{ fields.field_image.content }}
+  {% else %}
+    <img src="/{{ active_theme_path() }}/images/placeholder.jpg" alt="Изображение-плейсхолдер">
   {% endif %}
+</div>
 
   <div class="sidebar-news-item__text">
     {% if fields.title.content %}
