@@ -46,3 +46,15 @@ global-scripts:
     - ghostweb/bootstrap-js # Убедимся, что Bootstrap JS загружен
     - core/jquery # Если ваши скрипты используют jQuery
     - core/once
+
+
+
+accessibility-widget-simple:
+  version: 1.0.0
+  js:
+    js/jquery.js: { weight: -20 }
+    js/uhpv-hover-full.min.js: { weight: -19 }
+  css:
+    theme:
+      # Указываем путь к нашему новому локальному файлу
+      css/accessibility.css: {}

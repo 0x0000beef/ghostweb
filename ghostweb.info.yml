@@ -11,6 +11,7 @@ libraries:
   - ghostweb/global-scripts
   - ghostweb/fonts # Подключение шрифтов
   - ghostweb/mayor-card # глава
+  - ghostweb/accessibility-widget-simple # ghostweb.info.yml
 
 regions:
   service_top: 'Service Top (for scripts)'
@@ -36,3 +37,4 @@ regions:
 
 # Drupal будет искать favicon в корне сайта, но можно указать и здесь
 favicon: images/favicon.ico
+
