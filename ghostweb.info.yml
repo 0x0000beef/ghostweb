@@ -5,9 +5,9 @@ core_version_requirement: ^10
 base theme: false # Полностью автономная тема
 
 libraries:
-  - ghostweb/global-styling
   - ghostweb/bootstrap-css # Bootstrap CSS подключается отдельно, чтобы быть раньше кастомных стилей
   - ghostweb/bootstrap-js
+  - ghostweb/global-styling
   - ghostweb/global-scripts
   - ghostweb/fonts # Подключение шрифтов
   - ghostweb/mayor-card # глава

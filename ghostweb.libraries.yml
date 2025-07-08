@@ -43,6 +43,6 @@ global-scripts:
   js:
     js/script.js: { attributes: { defer: true } }
   dependencies:
-    - core/jquery # Если ваши скрипты используют jQuery
     - ghostweb/bootstrap-js # Убедимся, что Bootstrap JS загружен
+    - core/jquery # Если ваши скрипты используют jQuery
     - core/once
