@@ -711,6 +711,81 @@ article.node--view-mode-full figure.figure-with-caption figcaption {
 
 
 
+
+
+
+/* Стили для хлебных крошек */
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+
+
+.breadcrumb__item:last-child::after {
+  /* Убираем разделитель у последнего элемента */
+  content: '';
+}
+
+.breadcrumb__link {
+  text-decoration: none;
+  color: #007bff;
+}
+.breadcrumb__link:hover {
+  text-decoration: underline;
+}
+
+/* Стили для нашей иконки "домика" */
+.breadcrumb__home-icon {
+  display: inline-block;
+  width: 1.4em;
+  height: 1.4em;
+  background-image: url('../images/home-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Небольшая коррекция для вертикального выравнивания с текстом */
+  vertical-align: baseline;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.breadcrumb__link:hover .breadcrumb__home-icon {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  * Стили для страницы результатов по тегу
  */
@@ -774,55 +849,4 @@ article.node--view-mode-full figure.figure-with-caption figcaption {
     width: 100%;
     margin-bottom: 1rem;
   }
-}
-
-
-
-
-
-
-
-
-/* Стили для хлебных крошек */
-.breadcrumb__list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-
-
-.breadcrumb__item:last-child::after {
-  /* Убираем разделитель у последнего элемента */
-  content: '';
-}
-
-.breadcrumb__link {
-  text-decoration: none;
-  color: #007bff;
-}
-.breadcrumb__link:hover {
-  text-decoration: underline;
-}
-
-/* Стили для нашей иконки "домика" */
-.breadcrumb__home-icon {
-  display: inline-block;
-  width: 1.4em;
-  height: 1.4em;
-  background-image: url('../images/home-icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  /* Небольшая коррекция для вертикального выравнивания с текстом */
-  vertical-align: baseline;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-.breadcrumb__link:hover .breadcrumb__home-icon {
-  opacity: 1;
 }

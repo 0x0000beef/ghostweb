@@ -1,0 +1,90 @@
+/*
+ * Адаптированные стили для сетки материалов на страницах таксономии
+ */
+
+/* 1. Контейнер для всей сетки */
+.view-taxonomy-term .view-content {
+  display: grid;
+  gap: 1.5rem; /* Расстояние между карточками */
+  
+  /* Мобильные стили (по умолчанию) - 1 колонка */
+  grid-template-columns: 1fr;
+}
+
+
+
+
+/*
+ * Стили для карточек на страницах таксономии (вертикальный список)
+ */
+
+/* 1. Наша новая кастомная карточка */
+.term-card {
+  display: flex; /* Включаем Flexbox для расположения колонок в ряд */
+  gap: 1.5rem;   /* Расстояние между картинкой и текстом */
+  
+  background-color: #fff;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem; /* Внешний отступ снизу */
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0, 0.05);
+}
+.term-card:last-child {
+  margin-bottom: 0;
+}
+
+/* 2. Левая колонка с изображением */
+.term-card__image {
+  flex-shrink: 0;   /* Запрещаем колонке сжиматься */
+  width: 250px;     /* Фиксированная ширина для картинки */
+}
+.term-card__image img {
+  border-radius: 4px; /* Небольшое скругление для самой картинки */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 3. Правая колонка с текстом */
+.term-card__content {
+  flex-grow: 1; /* Разрешаем колонке растягиваться на все доступное место */
+  display: flex;
+  flex-direction: column; /* Элементы внутри будут идти друг под другом */
+}
+.term-card__title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+.term-card__title a {
+  text-decoration: none;
+  color: #212529;
+  font-weight: bold;
+}
+.term-card__date {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+  /* order: -1; Поднимаем дату над заголовком */
+}
+
+.term-card__body {
+  margin-bottom: 1rem;
+}
+
+.term-card__tags {
+  margin-top: auto; /* Прижимает теги к низу карточки */
+  padding-top: 1rem;
+  border-top: 1px solid #f1f1f1;
+}
+
+/* 4. Адаптивность для мобильных */
+@media (max-width: 767.98px) {
+  .term-card {
+    flex-direction: column; /* Картинка встаёт над текстом */
+  }
+  .term-card__image {
+    width: 100%; /* Картинка растягивается на всю ширину */
+  }
+}
