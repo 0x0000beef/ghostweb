@@ -29,3 +29,33 @@ function ghostweb_theme_suggestions_block_alter(array &$suggestions, array $vari
     }
   }
 }
+
+
+/**
+ * Implements hook_preprocess_HOOK() for file_link.html.twig.
+ *
+ * Эта функция выполняется перед тем, как шаблон file-link.html.twig будет отображен.
+ * Мы используем её, чтобы перехватить и изменить текст ссылки на файл.
+ */
+function ghostweb_preprocess_file_link(array &$variables) {
+  // Текст ссылки находится в ключе '#title' внутри рендер-массива 'link'.
+  if (isset($variables['link']['#title'])) {
+    $link_text = $variables['link']['#title'];
+    
+    // Установите желаемый лимит длины имени файла.
+    $limit = 60;
+
+    // Используем mb_strlen для корректной работы с кириллицей и другими кодировками.
+    if (mb_strlen($link_text) > $limit) {
+      // Если имя файла длиннее лимита, обрезаем его.
+      // Эта логика сохраняет начало и конец имени (включая расширение).
+      // Например: "очень_длинное_имя...файла.jpg"
+      $start_length = 30;
+      $end_length = 27;
+      $truncated_text = mb_substr($link_text, 0, $start_length) . '...' . mb_substr($link_text, -$end_length);
+      
+      // Перезаписываем оригинальный текст ссылки нашим обрезанным вариантом.
+      $variables['link']['#title'] = $truncated_text;
+    }
+  }
+}
